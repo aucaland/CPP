@@ -8,7 +8,10 @@
 
 class Contact
 {
-
+	public :
+		void	add();
+		void	search();
+		void	exit();
 };
 
 

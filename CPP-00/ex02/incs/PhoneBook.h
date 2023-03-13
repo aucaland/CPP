@@ -8,7 +8,11 @@
 
 class PhoneBook
 {
-
+	private :
+		char *contacts[8];
+	
+	public :
+		void;
 };
 
 
