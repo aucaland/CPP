@@ -6,18 +6,21 @@
 #define CPP_00_CONTACT_HPP
 
 #include <iostream>
+using std::string;
 
 class Contact
 {
-	std::string firstName;
-	std::string lastName;
-	std::string nickname;
-	std::string phoneNumber;
+private :
+	string	_firstName;
+	string	_lastName;
+	string	_nickname;
+	string	_phoneNumber;
+	string	_darkestSecret;
 
-	public :
-		Contact();
-		~Contact();
-		void display(void);
+public :
+	void		askInput(void);
+	void		display(void);
+	string	getInput(string str);
 };
 
 

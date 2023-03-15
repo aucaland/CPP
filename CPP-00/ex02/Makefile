@@ -1,4 +1,4 @@
-NAME				= megaphone
+NAME				= Phonebook
 
 CC					= c++
 FLAGS				= -Wall -Wextra -Werror -std=c++98
@@ -9,17 +9,20 @@ OBJ_DIR				= objs
 H_DIR				= incs
 
 SRC_NAME			= Contact.cpp PhoneBook.cpp main.cpp
-INCS_NAME			= Contact.hpp PhoneBook.hpp
+INCS_NAME			= Contact.hpp PhoneBook.hpp outputs.h
+
+OBJ_NAME			= $(SRC_NAME:%.cpp=%.o)
 
 SRC 				= $(addprefix $(SRC_DIR)/,$(SRC_NAME))
 OBJ 				= $(addprefix $(OBJ_DIR)/,$(OBJ_NAME))
 INCS				= $(addprefix $(H_DIR)/,$(INCS_NAME))
+
 ## Rules ##
 
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-	@$(CC) $(FLAGS) megaphone.cpp -o  $(NAME)
+	@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 	@printf %b	"\n"
 	@printf %b  "\033[1;35m-[$(NAME)]__Edit/Create .o in \033[0m  \033[0;32m[OK]\033[0m\n"
 	@printf %b  "\r"
@@ -27,7 +30,7 @@ $(NAME):	$(OBJ)
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.cpp $(INCS)
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(FLAGS)-o $@ -c $<
+	@$(CC) $(FLAGS) -o $@ -c $<
 	@printf %b "-\033[1;35m[$(NAME)]\033[0m__Compiling \033[1;92m$<\033[0m in \033[1;92m$@\033[0m..."
 	@printf "\r"
 
