@@ -13,7 +13,6 @@ class PhoneBook
 private :
 	Contact	_contacts[8];
 	int 	_lastAdd;
-	bool	_isFull;
 	int 	_bookSize;
 
 	int 	_increaseLastAdd();

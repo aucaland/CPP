@@ -10,7 +10,6 @@
 
 PhoneBook::PhoneBook()
 {
-	this->_isFull = false;
 	this->_lastAdd = 0;
 	this->input = "";
 	this->_bookSize = 0;
@@ -25,10 +24,7 @@ void PhoneBook::add()
 int PhoneBook::_increaseLastAdd()
 {
 	if (_lastAdd == 8)
-	{
-		_isFull = true;
 		_lastAdd = 1;
-	}
 	else
 		_lastAdd++;
 	if (_bookSize != 8)
@@ -63,10 +59,10 @@ void PhoneBook::search()
 	std::getline(std::cin, line);
 	std::stringstream ss(line);
 	ss >> index;
-	if (index > _bookSize || index < 1)
+	if (index >= _bookSize || index < 0)
 		std::cout << INV_INDEX << std::endl;
 	else
-		_contacts[index - 1].display(index);
+		_contacts[index].display(index);
 	std::cin.clear();
 }
 
