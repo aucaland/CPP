@@ -1,4 +1,4 @@
-NAME				= Phonebook
+NAME				= test
 
 CC					= c++
 FLAGS				= -Wall -Wextra -Werror -std=c++98
@@ -8,8 +8,8 @@ SRC_DIR				= srcs
 OBJ_DIR				= objs
 H_DIR				= incs
 
-SRC_NAME			= Contact.cpp PhoneBook.cpp main.cpp
-INCS_NAME			= Contact.hpp PhoneBook.hpp outputs.h
+SRC_NAME			= Account.cpp tests.cpp
+INCS_NAME			= Account.hpp
 
 OBJ_NAME			= $(SRC_NAME:%.cpp=%.o)
 
