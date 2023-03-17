@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/17 12:50:01 by aurel             #+#    #+#             */
-/*   Updated: 2023/03/17 14:09:38 by aurel            ###   ########.fr       */
+/*   Created: 2023/03/17 16:34:15 by aurel             #+#    #+#             */
+/*   Updated: 2023/03/17 17:00:33 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/Zombie.h"
 
-void Zombie::_randomChump(string name)
+Zombie *Zombie::zombieHorde(int N, string name)
 {
-	Zombie zombie( name );
-	zombie.announce();
+	Zombie* horde = new Zombie[N];
+	for (int i = 0; i < N; i++)
+	{
+		horde[i].setName(name);
+		horde[i].index = i + 1;
+	}
+	return horde;
 }

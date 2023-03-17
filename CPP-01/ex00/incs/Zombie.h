@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Zombie.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/17 12:49:23 by aurel             #+#    #+#             */
-/*   Updated: 2023/03/17 14:22:45 by aurel            ###   ########.fr       */
+/*   Created: 2023/03/17 12:49:15 by aurel             #+#    #+#             */
+/*   Updated: 2023/03/17 14:28:11 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/Zombie.h"
-#include "../incs/outputs.h"
+#ifndef CPP_ZOMBIE_H
+#define CPP_ZOMBIE_H
 
-Zombie::Zombie(const string& name)
-{
-	this->_name = name;
-}
+#include <iostream>
+using std::string;
 
-Zombie::~Zombie()
+class Zombie
 {
-	std::cout << this->_name << ZOMBIE_DEATH << std::endl;
-}
+private :
+	string	_name;
 
-void Zombie::announce()
-{
-	std::cout << this->_name << ANNOUNCEMENT << std::endl;
-}
+public :
+	explicit Zombie(const string& name);
+	~Zombie();
+	void 	announce( void );
+	static Zombie*	newZombie( string name );
+	static void	randomChump( string name);
+
+};
+
+
+#endif //CPP_ZOMBIE_H
