@@ -5,26 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 14:50:55 by aurel             #+#    #+#             */
-/*   Updated: 2023/03/18 15:52:36 by aurel            ###   ########.fr       */
+/*   Created: 2023/03/18 16:57:53 by aurel             #+#    #+#             */
+/*   Updated: 2023/03/18 19:14:25 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/Harl.h"
-
+#include "../incs/Fixed.h"
+#include <iostream>
 int main()
 {
-	string	level = "";
-	Harl	harl;
+	Fixed a;
+	Fixed b( a );
+	Fixed c;
 
-	while (level != "EXIT")
-	{
-		cout << "Enter a level: " << std::flush;
-		std::getline(std::cin, level);
+	c = b;
 
-		if (level.empty() || !std::cin.good() || level[0] == '\n')
-			continue ;
-		harl.complain(level);
-	}
-	return (0);
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	return 0;
 }

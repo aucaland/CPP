@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 14:50:55 by aurel             #+#    #+#             */
-/*   Updated: 2023/03/18 15:52:36 by aurel            ###   ########.fr       */
+/*   Created: 2023/03/18 16:46:13 by aurel             #+#    #+#             */
+/*   Updated: 2023/03/18 16:56:15 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/Harl.h"
+#ifndef CPP_FIXED_H
+#define CPP_FIXED_H
 
-int main()
+
+class Fixed
 {
-	string	level = "";
-	Harl	harl;
+private :
+	int					_fixedPoint;
+	static const int	_nbrFracBit;
+public :
+	Fixed();
+	~Fixed();
+	Fixed(const Fixed& other);
+	Fixed& operator=(const Fixed& other);
+	int		getRawBits( void ) const;
+	void	setRawBits( int const raw);
+};
 
-	while (level != "EXIT")
-	{
-		cout << "Enter a level: " << std::flush;
-		std::getline(std::cin, level);
 
-		if (level.empty() || !std::cin.good() || level[0] == '\n')
-			continue ;
-		harl.complain(level);
-	}
-	return (0);
-}
+#endif //CPP_FIXED_H

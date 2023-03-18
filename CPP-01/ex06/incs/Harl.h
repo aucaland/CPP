@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/18 14:50:55 by aurel             #+#    #+#             */
-/*   Updated: 2023/03/18 15:52:36 by aurel            ###   ########.fr       */
+/*   Created: 2023/03/18 14:09:00 by aurel             #+#    #+#             */
+/*   Updated: 2023/03/18 15:25:58 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/Harl.h"
+#ifndef CPP_HARL_H
+#define CPP_HARL_H
 
-int main()
+#include <iostream>
+using std::cout;
+using std::endl;
+using std::string;
+
+class Harl
 {
-	string	level = "";
-	Harl	harl;
+private :
+	void	debug( void );
+	void	info( void );
+	void	warning( void );
+	void	error( void );
+public :
+	Harl();
+	~Harl();
+	void		complain( std::string level );
 
-	while (level != "EXIT")
-	{
-		cout << "Enter a level: " << std::flush;
-		std::getline(std::cin, level);
+};
 
-		if (level.empty() || !std::cin.good() || level[0] == '\n')
-			continue ;
-		harl.complain(level);
-	}
-	return (0);
-}
+
+#endif //CPP_HARL_H
