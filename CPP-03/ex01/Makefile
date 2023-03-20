@@ -8,8 +8,8 @@ SRC_DIR				= srcs
 OBJ_DIR				= objs
 H_DIR				= incs
 
-SRC_NAME			= main.cpp ClapTrap.cpp
-INCS_NAME			= ClapTrap.h
+SRC_NAME			= main.cpp ClapTrap.cpp ScavTrap.cpp
+INCS_NAME			= ClapTrap.h ScavTrap.h
 
 OBJ_NAME			= $(SRC_NAME:%.cpp=%.o)
 

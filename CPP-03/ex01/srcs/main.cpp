@@ -3,32 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:19:53 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/20 13:28:43 by aucaland         ###   ########.fr       */
+/*   Updated: 2023/03/20 23:13:59 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/ClapTrap.h"
+#include "../incs/ScavTrap.h"
 
 int main()
 {
-	ClapTrap clap = ClapTrap("Jean-mi");
+	// Virtual purpose
+//	ClapTrap* test = new ScavTrap("toto");
+//	test->attack("truc");
+//	delete test;
+	ScavTrap scavOne( "Macron" );
+	ScavTrap scavThree( "Benne a ordures");
+	ScavTrap scavTwo(scavThree);
+	ScavTrap test;
 
-	clap.attack("George");
-	clap.takeDamage(3);
-	clap.beRepaired(2);
-	clap.beRepaired(2);
-	clap.beRepaired(2);
-	clap.beRepaired(2);
-	clap.beRepaired(2);
-	clap.beRepaired(2);
-	clap.beRepaired(2);
-	clap.beRepaired(2);
-	clap.beRepaired(2);
-	clap.beRepaired(2);
-	clap.beRepaired(2);
-	clap.beRepaired(2);
-	return (0);
+	test = scavTwo;
+	scavOne.attack( "La ZAD de Notre Dame des Landes");
+	scavOne.attack( " les retraites");
+	scavTwo.attack( "Darmanin");
+	scavThree.attack( "la Macronie");
+	test.attack("dans le vent");
+	scavThree.attack( "la Macronie");
+
+	return 0;
 }

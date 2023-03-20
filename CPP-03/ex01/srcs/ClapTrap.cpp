@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:50:37 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/20 13:37:09 by aucaland         ###   ########.fr       */
+/*   Updated: 2023/03/20 23:11:54 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,18 @@ ClapTrap::ClapTrap()
 	_hitPoint = 10;
 	_energyPoint = 10;
 	_attackDamage = 1;
+	cout << "Default constructor ClapTrap " << this->_name << " called" << endl;
 }
 
 ClapTrap::~ClapTrap() {
+	cout << "Default destructor ClapTrap " << this->_name << " called" << endl;
 
 }
 
 ClapTrap::ClapTrap(string name) : _name(name), 	_hitPoint(10),
 								_energyPoint(10) ,_attackDamage(1)
 {
-
+	cout << "ClapTrap[ " << this->_name << " ] constructor called" << endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
@@ -38,6 +40,8 @@ ClapTrap::ClapTrap(const ClapTrap &other)
 	this->_energyPoint = other._energyPoint;
 	this->_hitPoint = other._hitPoint;
 	this->_name = other._name;
+	cout << "ClapTrap[ " << this->_name << " ] copy constructor called" << endl;
+
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other)

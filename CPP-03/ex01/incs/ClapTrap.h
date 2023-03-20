@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:50:30 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/20 13:16:26 by aucaland         ###   ########.fr       */
+/*   Updated: 2023/03/20 23:15:26 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,24 @@
 using std::string;
 
 class ClapTrap {
-private :
-	string	_name;
+
+protected:
+	string				_name;
 	unsigned int		_hitPoint;
-	int 	_energyPoint;
-	unsigned int 	_attackDamage;
+	int 				_energyPoint;
+	unsigned int 		_attackDamage;
+
+	ClapTrap();
 
 public :
-	ClapTrap();
-	~ClapTrap();
+	virtual ~ClapTrap();
 	ClapTrap( string name );
 	ClapTrap(const ClapTrap &other);
 	ClapTrap& operator=(const ClapTrap &other);
-	void attack( const string& target );
-	void takeDamage( unsigned int amount );
-	void beRepaired( unsigned int amount );
+
+	virtual void attack( const string& target );
+	virtual void takeDamage( unsigned int amount );
+	virtual void beRepaired( unsigned int amount );
 
 };
 
