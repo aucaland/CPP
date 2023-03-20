@@ -8,23 +8,24 @@
       <file path="$PROJECT_DIR$/CPP-01/ex03" />
       <file path="$PROJECT_DIR$/CPP-02/ex01" />
       <file path="$PROJECT_DIR$/CPP-02/ex03" />
+      <file path="$PROJECT_DIR$/CPP-03" />
     </sourceRoots>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="MakefileSettings">
     <option name="linkedExternalProjectsSettings">
       <MakefileProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/CPP-02/ex03" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/CPP-03/ex01" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/CPP-02/ex03" />
+            <option value="$PROJECT_DIR$/CPP-03/ex01" />
           </set>
         </option>
         <option name="version" value="2" />
       </MakefileProjectSettings>
     </option>
   </component>
-  <component name="MakefileWorkspace" PROJECT_DIR="$PROJECT_DIR$/CPP-02/ex03">
+  <component name="MakefileWorkspace" PROJECT_DIR="$PROJECT_DIR$/CPP-03/ex01">
     <contentRoot DIR="$PROJECT_DIR$" />
   </component>
 </project>
