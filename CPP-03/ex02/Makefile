@@ -1,4 +1,4 @@
-NAME				= ScavTrap
+NAME				= FragTrap
 
 CC					= c++
 FLAGS				= -Wall -Wextra -Werror -std=c++98
