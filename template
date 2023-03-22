@@ -1,0 +1,56 @@
+////		c++ template			////
+
+#parse("C File Header.h")
+#[[#include]]# "${HEADER_FILENAME}"
+using std::cout;
+using std::endl;
+
+${NAME}::${NAME}()
+{
+	cout << "Constructor ${NAME} called" << endl;
+}
+
+${NAME}::~${NAME}()
+{
+	cout << "Destructor ${NAME} called" << endl;
+}
+
+${NAME}::${NAME}(const ${NAME} &other)
+{
+	cout << "Copy constructor ${NAME} called" << endl;
+}
+
+${NAME} &${NAME}::operator=(const ${NAME} &other)
+{
+	cout << "Constructor assignement ${NAME} called" << endl;
+	return *this;
+}
+
+
+
+${NAMESPACES_OPEN_CPP}
+${NAMESPACES_CLOSE_CPP}
+
+
+////CLASS HEADER TEMPLATE/////
+
+#parse("C File Header.h")
+#pragma once
+
+#[[#include]]# <iostream>
+#[[#include]]# "${NAME}.h"
+using std::string;
+
+${NAMESPACES_OPEN}
+
+class ${NAME} {
+public:
+	${NAME}();
+	~${NAME}();
+	${NAME}& operator=( const ${NAME} & );
+	${NAME} ( const ${NAME} & );
+};
+
+${NAMESPACES_CLOSE}
+
+
