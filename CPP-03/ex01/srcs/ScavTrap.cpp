@@ -35,20 +35,22 @@ ScavTrap::ScavTrap(string name) : ClapTrap(name)
 	cout << "ScavTrap [ " << this->_name << " ] constructor called" << endl;
 }
 
-//ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap( other )
-//{
-//	cout << "Copy constructor ScavTrap [ " << this->_name << " ] called" << endl;
-//}
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap( other )
+{
+	cout << "Copy constructor ScavTrap [ " << this->_name << " ] called" << endl;
+}
 
 //ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 //{
+//	ClapTrap * ad1, * ad2;
+//	ad1 = this;
+//	ad2 = (ClapTrap *) &other;
+//	*ad1 = *ad2;
+//// Dans le cas d'une surdefinition de l'operateur par la classe Scav
+//// Utile si l'on doit la redefinir dans le cas de nouveaux attributs.
 //	cout << "Constructor assignement Scavtrap called" << endl;
-//	this->_name = other._name;
-//	this->_energyPoint = other._energyPoint;
-//	this->_attackDamage = other._attackDamage;
-//	this->_hitPoint = other._hitPoint;
 //	return *this;
-//}
+//}}
 
 void ScavTrap::attack(const string &target)
 {
