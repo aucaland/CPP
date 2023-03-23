@@ -15,7 +15,7 @@
 
 #include "ClapTrap.h"
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 public:
 	~FragTrap();

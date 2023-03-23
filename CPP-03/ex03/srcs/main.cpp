@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/FragTrap.h"
+#include "../incs/DiamondTrap.h"
 
 int main()
 {
@@ -18,10 +18,10 @@ int main()
 //	ClapTrap* test = new FragTrap("toto");
 //	test->attack("truc");
 //	delete test;
-	FragTrap scavOne( "Macron" );
-	FragTrap scavThree( "Benne a ordures");
-	FragTrap scavTwo(scavThree);
-	FragTrap test;
+	DiamondTrap scavOne( "Macron" );
+	DiamondTrap scavThree( "Benne a ordures");
+	DiamondTrap scavTwo(scavThree);
+	DiamondTrap test;
 
 	test = scavTwo;
 	scavOne.attack( "La ZAD de Notre Dame des Landes");

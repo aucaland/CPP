@@ -2,10 +2,11 @@
 // Created by aurel on 3/22/23.
 //
 
-#pragma once
+#ifndef CPP_DIAMONDTRAP_H
+# define CPP_DIAMONDTRAP_H
+
 
 #include <iostream>
-#include "DiamondTrap.h"
 #include "FragTrap.h"
 #include "ScavTrap.h"
 
@@ -25,4 +26,7 @@ public:
 	DiamondTrap &operator=( const DiamondTrap & );
 
 	DiamondTrap( const DiamondTrap & );
+	void attack( const string & target );
 };
+
+#endif
