@@ -17,16 +17,18 @@ class DiamondTrap : public FragTrap, public ScavTrap
 {
 private :
 	string _name;
+	DiamondTrap();
+
 
 public:
-	DiamondTrap();
 
 	~DiamondTrap();
 	DiamondTrap( string name );
 	DiamondTrap &operator=( const DiamondTrap & );
 
 	DiamondTrap( const DiamondTrap & );
-	void attack( const string & target );
+	void 	attack( const string & target );
+	void 	whoAmI();
 };
 
 #endif

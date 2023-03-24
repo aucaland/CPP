@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:50:37 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/20 23:11:54 by aurel            ###   ########.fr       */
+/*   Updated: 2023/03/24 13:42:12 by aucaland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ ClapTrap::ClapTrap()
 	_hitPoint = 10;
 	_energyPoint = 10;
 	_attackDamage = 1;
-	cout << "Default constructor ClapTrap " << this->_name << " called" << endl;
+	cout << "Default constructor \033[1m\033[32mClapTrap\033[0m\033[0m called" << endl;
 }
 
 ClapTrap::~ClapTrap() {
-	cout << "Default destructor ClapTrap " << this->_name << " called" << endl;
+	cout << "Default destructor \033[1m\033[32mClapTrap\033[0m\033[0m called" << endl;
 
 }
 
 ClapTrap::ClapTrap(string name) : _name(name), 	_hitPoint(10),
 								_energyPoint(10) ,_attackDamage(1)
 {
-	cout << "ClapTrap[ " << this->_name << " ] constructor called" << endl;
+	cout << "\033[1m\033[32mClapTrap\033[0m\033[0m[ " << this->_name << " ] constructor called" << endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
@@ -40,7 +40,7 @@ ClapTrap::ClapTrap(const ClapTrap &other)
 	this->_energyPoint = other._energyPoint;
 	this->_hitPoint = other._hitPoint;
 	this->_name = other._name;
-	cout << "ClapTrap[ " << this->_name << " ] copy constructor called" << endl;
+	cout << "\033[1m\033[32mClapTrap\033[0m\033[0m[ " << this->_name << " ] copy constructor called" << endl;
 
 }
 
@@ -64,14 +64,14 @@ void ClapTrap::attack(const string &target)
 		return ;
 	}
 	this->_energyPoint--;
-	cout << "ClapTrap " << this->_name << " attacks " << target << \
+	cout << "\033[1m\033[32mClapTrap\033[0m\033[0m " << this->_name << " attacks " << target << \
 			", causing " << this->_attackDamage << " points of damage!" << endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	this->_hitPoint -= amount;
-	cout << "ClapTrap " << this->_name << " take " << amount << \
+	cout << "\033[1m\033[32mClapTrap\033[0m\033[0m " << this->_name << " take " << amount << \
 			" damage, remaining health : " << this->_hitPoint << endl;
 }
 
@@ -84,7 +84,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	this->_energyPoint--;
 	this->_hitPoint += amount;
-	cout << "ClapTrap " << this->_name << " repair himself for " << amount << \
+	cout << "\033[1m\033[32mClapTrap\033[0m\033[0m " << this->_name << " repair himself for " << amount << \
 			" health, remaining health : " << this->_hitPoint << endl;
 }
 

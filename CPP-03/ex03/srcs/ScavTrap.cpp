@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:39:59 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/22 11:10:02 by aurel            ###   ########.fr       */
+/*   Updated: 2023/03/24 13:25:11 by aucaland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ ScavTrap::ScavTrap()
 	this->_hitPoint = 100;
 	this->_energyPoint = 50;
 	this->_attackDamage = 20;
-	cout << "Constructor ScavTrap [ " << this->_name << " ] called" << endl;
+	cout << "Constructor \033[1m\033[32mScavTrap\033[0m\033[0m called" << endl;
 }
 
 ScavTrap::~ScavTrap()
 {
-	cout << "Destructor ScavTrap [ " << this->_name << " ] called" << endl;
+	cout << "Destructor \033[1m\033[32mScavTrap\033[0m\033[0m called" << endl;
 }
 
 ScavTrap::ScavTrap(string name) : ClapTrap(name)
@@ -32,12 +32,12 @@ ScavTrap::ScavTrap(string name) : ClapTrap(name)
 	this->_hitPoint = 100;
 	this->_energyPoint = 50;
 	this->_attackDamage = 20;
-	cout << "ScavTrap [ " << this->_name << " ] constructor called" << endl;
+	cout << "\033[1m\033[32mScavTrap\033[0m\033[0m [ " << this->_name << " ] constructor called" << endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap( other )
 {
-	cout << "Copy constructor ScavTrap [ " << this->_name << " ] called" << endl;
+	cout << "Copy constructor \033[1m\033[32mScavTrap\033[0m\033[0m [ " << this->_name << " ] called" << endl;
 }
 
 //ScavTrap &ScavTrap::operator=(const ScavTrap &other)
@@ -56,15 +56,15 @@ void ScavTrap::attack(const string &target)
 {
 	if (this->_energyPoint == 0)
 	{
-		cout << "No energy point available, attack failed for ScavTrap: " << this->_name << endl;
+		cout << "No energy point available, attack failed for \033[1m\033[32mScavTrap\033[0m\033[0m: " << this->_name << endl;
 		return ;
 	}
 	this->_energyPoint--;
-	cout << "\033[1mScavTrap " << this->_name << " attacks " << target << \
+	cout << "\033[1m\033[32mScavTrap\033[0m\033[0m " << this->_name << " \033[1;31mattacks\033[0m " << target << \
 			", causing " << this->_attackDamage << " points of damage! Mana remaining: "<< this->_energyPoint << "\033[0m" << endl;
 }
 
 void ScavTrap::guardGate()
 {
-	cout << "ScavTrap :" << this->_name << " is in Gate keeper mode" << endl;
+	cout << "\033[1m\033[32mScavTrap\033[0m\033[0m :" << this->_name << " is in Gate keeper mode" << endl;
 }
