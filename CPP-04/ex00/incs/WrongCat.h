@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.h                                              :+:      :+:    :+:   */
+/*   Cat.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 15:26:41 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/24 15:26:41 by aucaland         ###   ########.fr       */
+/*   Created: 2023/03/24 15:26:29 by aucaland          #+#    #+#             */
+/*   Updated: 2023/03/25 12:22:07 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include "Animal.h"
+#include "WrongAnimal.h"
 using std::string;
 
 
-class Dog : public Animal
+class WrongCat : public WrongAnimal
 {
 public:
-	Dog();
+	WrongCat();
 
-	~Dog();
+	~WrongCat();
 
-	Dog &operator=(const Dog &);
+	WrongCat &operator=(const WrongCat &);
 
-	Dog(const Dog &);
+	WrongCat(const WrongCat &);
+	void makeSound() const;
+private:
+	string type;
 };
-
-
-#endif //CPP_DOG_H

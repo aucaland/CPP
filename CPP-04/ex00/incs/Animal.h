@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.h                                              :+:      :+:    :+:   */
+/*   Animal.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 15:26:29 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/24 15:26:29 by aucaland         ###   ########.fr       */
+/*   Created: 2023/03/24 15:23:27 by aucaland          #+#    #+#             */
+/*   Updated: 2023/03/25 12:22:25 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include "Animal.h"
+
 using std::string;
 
 
-class Cat : public Animal
+class Animal
 {
 public:
-	Cat();
+	Animal();
 
-	~Cat();
+	virtual ~Animal();
 
-	Cat &operator=(const Cat &);
+	Animal &operator=(const Animal &);
 
-	Cat(const Cat &);
+	Animal(const Animal &);
+
+	virtual void makeSound() const;
+	virtual string getType() const;
+protected:
+	string type;
 };
 
-
-#endif //CPP_CAT_H

@@ -1,4 +1,4 @@
-NAME				= FragTrap
+NAME				= Animal
 
 CC					= c++
 FLAGS				= -Wall -Wextra -Werror -Wshadow -std=c++98
@@ -8,8 +8,8 @@ SRC_DIR				= srcs
 OBJ_DIR				= objs
 H_DIR				= incs
 
-SRC_NAME			= main.cpp Animal.cpp
-INCS_NAME			= Animal.h
+SRC_NAME			= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+INCS_NAME			= Animal.h Cat.h Dog.h WrongAnimal.h WrongCat.h
 
 OBJ_NAME			= $(SRC_NAME:%.cpp=%.o)
 
