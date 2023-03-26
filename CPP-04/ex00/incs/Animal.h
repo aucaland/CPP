@@ -17,20 +17,3 @@
 using std::string;
 
 
-class Animal
-{
-public:
-	Animal();
-
-	virtual ~Animal();
-
-	Animal &operator=(const Animal &);
-
-	Animal(const Animal &);
-
-	virtual void makeSound() const;
-	virtual string getType() const;
-protected:
-	string type;
-};
-

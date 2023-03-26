@@ -6,11 +6,13 @@
 /*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 15:23:33 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/25 12:23:45 by aurel            ###   ########.fr       */
+/*   Updated: 2023/03/26 11:42:25 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/Animal.h"
+#include "../../ex01/incs/Animal.h"
+
 
 using std::cout;
 using std::endl;
@@ -44,3 +46,8 @@ string Animal::getType() const
 {
 	return this->type;
 }
+
+
+
+
+
