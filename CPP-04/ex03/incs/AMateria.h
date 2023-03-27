@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.h                                              :+:      :+:    :+:   */
+/*   AMateria.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 15:26:29 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/27 09:59:25 by aucaland         ###   ########.fr       */
+/*   Created: 2023/03/27 13:41:05 by aucaland          #+#    #+#             */
+/*   Updated: 2023/03/27 13:44:08 by aucaland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include "Animal.h"
-#include "Brain.h"
+
 using std::string;
 
-
-class Cat : public Animal
+class AMateria
 {
+protected:
+	string _type;
+
 public:
-	Cat();
+	AMateria();
+	~AMateria();
 
-	~Cat();
+	AMateria(string const & type);
 
-	Cat &operator=(const Cat &);
-	Animal &operator=(const Animal & other);
+	AMateria &operator=(const AMateria &);
+	AMateria(const AMateria &);
 
-	Cat(const Cat &);
-	virtual void makeSound() const;
-	Brain* getBrain() const;
-private:
-	Brain* _brain;
+	string const & getType() const;
+	virtual AMateria* clone() const = 0;
+	virtual void use(ICharacter& target);
 };
+
+
+#endif //CPP_AMATERIA_H

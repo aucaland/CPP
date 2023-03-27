@@ -3,34 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 15:26:29 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/27 09:59:25 by aucaland         ###   ########.fr       */
+/*   Updated: 2023/03/25 12:22:07 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include "Animal.h"
-#include "Brain.h"
+#include "WrongAnimal.h"
 using std::string;
 
 
-class Cat : public Animal
+class WrongCat : public WrongAnimal
 {
 public:
-	Cat();
+	WrongCat();
 
-	~Cat();
+	~WrongCat();
 
-	Cat &operator=(const Cat &);
-	Animal &operator=(const Animal & other);
+	WrongCat &operator=(const WrongCat &);
 
-	Cat(const Cat &);
-	virtual void makeSound() const;
-	Brain* getBrain() const;
+	WrongCat(const WrongCat &);
+	void makeSound() const;
 private:
-	Brain* _brain;
+	string type;
 };
