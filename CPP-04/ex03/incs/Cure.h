@@ -5,21 +5,17 @@
 #pragma once
 
 #include <iostream>
+#include "ICharacter.h"
 using std::string;
 
 
-class Cure
+class Cure : public AMateria
 {
 public:
 	Cure();
-
 	~Cure();
-
-	Cure &operator=(const Cure &);
-
-	Cure(const Cure &);
-	Cure*	clone();
-	void 	use(ICharacter&);
+	AMateria* clone() const;
+	void 	use(ICharacter& target);
 };
 
 

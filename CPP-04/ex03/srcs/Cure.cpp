@@ -2,12 +2,12 @@
 // Created by aucaland on 3/27/23.
 //
 
-#include "Cure.h"
-
+#include "../incs/Cure.h"
+#include "../incs/AMateria.h"
 using std::cout;
 using std::endl;
 
-Cure::Cure() {
+Cure::Cure() : AMateria(){
 	cout << "Constructor Cure called" << endl;
 }
 
@@ -15,11 +15,13 @@ Cure::~Cure() {
 	cout << "Destructor Cure called" << endl;
 }
 
-Cure::Cure(const Cure &other) {
-	cout << "Copy constructor Cure called" << endl;
+void Cure::use( ICharacter & target)
+{
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }
 
-Cure &Cure::operator=(const Cure &other) {
-	cout << "Constructor assignement Cure called" << endl;
-	return *this;
+AMateria *Cure::clone() const
+{
+	return new Cure();
 }
+

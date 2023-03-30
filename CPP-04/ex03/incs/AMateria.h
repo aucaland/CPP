@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 13:41:05 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/27 13:44:08 by aucaland         ###   ########.fr       */
+/*   Updated: 2023/03/30 13:57:27 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include "ICharacter.h"
 
 using std::string;
 
@@ -23,7 +24,7 @@ protected:
 
 public:
 	AMateria();
-	~AMateria();
+	virtual ~AMateria();
 
 	AMateria(string const & type);
 

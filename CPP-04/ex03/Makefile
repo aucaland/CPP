@@ -8,8 +8,8 @@ SRC_DIR				= srcs
 OBJ_DIR				= objs
 H_DIR				= incs
 
-SRC_NAME			= main.cpp
-INCS_NAME			=
+SRC_NAME			= main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
+INCS_NAME			= AMateria.h Character.h Cure.h Ice.h ICharacter.h IMateriaSource.h MateriaSource.h
 
 OBJ_NAME			= $(SRC_NAME:%.cpp=%.o)
 

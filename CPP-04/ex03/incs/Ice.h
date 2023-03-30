@@ -5,21 +5,17 @@
 #pragma once
 
 #include <iostream>
+#include "ICharacter.h"
 using std::string;
 
 
-class Ice
+class Ice : public AMateria
 {
 public:
 	Ice();
-
 	~Ice();
-
-	Ice &operator=(const Ice &);
-
-	Ice(const Ice &);
-	Ice*	clone();
-	void 	use(ICharacter&);
+	AMateria* clone() const;
+	void 	use(ICharacter& target);
 };
 
 
