@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CidrRootsConfiguration">
     <sourceRoots>
+      <file path="$PROJECT_DIR$" />
       <file path="$PROJECT_DIR$/CPP-00/ex00" />
       <file path="$PROJECT_DIR$/CPP-00/ex01" />
       <file path="$PROJECT_DIR$/CPP-00/ex02" />
@@ -15,17 +16,17 @@
   <component name="MakefileSettings">
     <option name="linkedExternalProjectsSettings">
       <MakefileProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/CPP-04/ex02" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/CPP-04/ex03" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/CPP-04/ex02" />
+            <option value="$PROJECT_DIR$/CPP-04/ex03" />
           </set>
         </option>
         <option name="version" value="2" />
       </MakefileProjectSettings>
     </option>
   </component>
-  <component name="MakefileWorkspace" PROJECT_DIR="$PROJECT_DIR$/CPP-04/ex02">
+  <component name="MakefileWorkspace" PROJECT_DIR="$PROJECT_DIR$/CPP-04/ex03">
     <contentRoot DIR="$PROJECT_DIR$" />
   </component>
 </project>
