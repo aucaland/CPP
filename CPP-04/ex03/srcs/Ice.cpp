@@ -3,22 +3,18 @@
 //
 
 #include "../incs/Ice.h"
-#include "../incs/AMateria.h"
 
 using std::cout;
 using std::endl;
 
-Ice::Ice() {
+Ice::Ice() : AMateria() {
+	this->_type = "ice";
 	cout << "Constructor Ice called" << endl;
 }
 
-Ice::~Ice() {
-	cout << "Destructor Ice called" << endl;
-}
-
-void Ice::use( ICharacter & target)
+void Ice::use( ICharacter & target )
 {
-	std::cout << "* shoot an ice bolt at " << target.getName() << std::endl;
+	std::cout << "* shoot an ice bolt at " << target.getName() << " *" << std::endl;
 }
 
 AMateria *Ice::clone() const

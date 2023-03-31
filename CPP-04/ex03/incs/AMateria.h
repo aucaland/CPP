@@ -6,7 +6,7 @@
 /*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 13:41:05 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/30 13:57:27 by aurel            ###   ########.fr       */
+/*   Updated: 2023/03/31 13:20:55 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 #include <iostream>
 #include "ICharacter.h"
-
 using std::string;
 
 class AMateria
@@ -36,5 +35,3 @@ public:
 	virtual void use(ICharacter& target);
 };
 
-
-#endif //CPP_AMATERIA_H

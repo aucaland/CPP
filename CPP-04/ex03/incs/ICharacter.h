@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include "AMateria.h"
+class AMateria;
 
 using std::string;
 
@@ -13,19 +14,11 @@ using std::string;
 class ICharacter
 {
 public:
-	ICharacter();
-
-	virtual ~ICharacter();
-
-	ICharacter &operator=(const ICharacter &);
-	ICharacter(const ICharacter &);
-
+	virtual ~ICharacter() {};
 	virtual string const &getName() const = 0;
-	virtual void equip(AMateria* m) = 0;
+	virtual void equip(AMateria * m) = 0;
 	virtual void unequip(int idx) = 0;
 	virtual void use(int idx, ICharacter& target) = 0;
 
 };
 
-
-#endif //CPP_ICHARACTER_H

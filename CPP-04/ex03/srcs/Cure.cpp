@@ -3,16 +3,12 @@
 //
 
 #include "../incs/Cure.h"
-#include "../incs/AMateria.h"
 using std::cout;
 using std::endl;
 
 Cure::Cure() : AMateria(){
+	this->_type = "cure";
 	cout << "Constructor Cure called" << endl;
-}
-
-Cure::~Cure() {
-	cout << "Destructor Cure called" << endl;
 }
 
 void Cure::use( ICharacter & target)

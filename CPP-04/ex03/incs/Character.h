@@ -5,7 +5,7 @@
 #pragma once
 
 #include <iostream>
-#include "../incs/ICharacter.h"
+#include "AMateria.h"
 using std::string;
 
 
@@ -29,4 +29,3 @@ private:
 	string _name;
 };
 
-#endif //CPP_CHARACTER_H

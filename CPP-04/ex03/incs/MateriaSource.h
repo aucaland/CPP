@@ -5,7 +5,8 @@
 #pragma once
 
 #include <iostream>
-#include "../incs/IMateriaSource.h"
+#include "IMateriaSource.h"
+#include "AMateria.h"
 using std::string;
 
 
@@ -24,5 +25,3 @@ public:
 	void 	learnMateria(AMateria *m);
 };
 
-
-#endif //CPP_MATERIASOURCE_H
