@@ -6,7 +6,7 @@
 /*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 12:49:23 by aurel             #+#    #+#             */
-/*   Updated: 2023/03/17 17:05:48 by aurel            ###   ########.fr       */
+/*   Updated: 2023/04/08 13:51:08 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 Zombie::Zombie()
 {
-
+	this->_name = "Default";
+	std::cout << this->_name << " Zombie was created." << std::endl;
 }
 
 Zombie::~Zombie()
