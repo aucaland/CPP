@@ -2,13 +2,13 @@
 // Created by aurel on 4/8/23.
 //
 #include "../incs/Bureaucrat.h"
-
+#include "../incs/ShrubberyCreationForm.h"
 int main()
 {
 	try
 	{
 //		Bureaucrat empty("creep", 15);
-		Form		form("void", 10, 10);
+		ShrubberyCreationForm		form("void");
 //		empty.incrementGrade();
 //		Bureaucrat empty2("creep", 151);
 //		Bureaucrat empty3("creep", -10);

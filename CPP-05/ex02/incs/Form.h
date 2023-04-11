@@ -20,21 +20,23 @@ private:
 	int const	_gradeSign;
 	int const	_gradeExec;
 public:
+	/* Canonical */
 	Form();
-
-	~Form();
-
+	virtual ~Form() = 0;
 	Form &operator=( const Form & );
-
 	Form( const Form & );
 
-	string const getName() const;
-	Form( string const name, int const rankSign, int const rankExec );
+	/* Accessors */
 	bool getIsSigned() const;
 	int getGradSign() const;
 	int getGradExec() const;
+	string const getName() const;
 
-	void beSigned( Bureaucrat & );
+	/* Form function && other constructors */
+	Form( string name, int rankSign, int rankExec );
+	virtual void beSigned( Bureaucrat & ) = 0;
+
+	/* Class exceptions */
 	class GradeTooHighException : public std::exception
 	{
 	public:
