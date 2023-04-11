@@ -17,7 +17,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 	cout << "Destructor RobotomyRequestForm called" << endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm( string target ) : Form( target, 72, 45)
+RobotomyRequestForm::RobotomyRequestForm( string target ) : Form( "RobotomyForm", 72, 45)
 {
 	this->_target = target;
 }
@@ -30,8 +30,8 @@ void RobotomyRequestForm::execute( const Bureaucrat &exec ) const
 		throw GradeTooLowException((char *)"Grade too low for exec RobotomyRequestForm");
 	static int i;
 	if (i % 2 == 0)
-		cout << "* Drill in action * --> Robotomy in progress on " << exec.getName() << endl;
+		cout << "* Drill in action * --> Robotomy in progress on " << this->_target << endl;
 	else
-		cout << exec.getName() << "'s Robotomy failed" << endl;
+		cout << this->_target << "'s Robotomy failed" << endl;
 
 }

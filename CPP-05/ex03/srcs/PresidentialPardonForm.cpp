@@ -28,6 +28,6 @@ void PresidentialPardonForm::execute( const Bureaucrat &exec ) const
 		throw FormNotSigned();
 	else if (exec.getGrade() > this->getGradExec())
 		throw GradeTooLowException((char *)"Grade too low for exec PresidentialPardonForm");
-	cout << exec.getName() << " has been excuse by Zaphod Beeblebrox" << endl;
+	cout << this->_target << " has been excuse by Zaphod Beeblebrox" << endl;
 
 }

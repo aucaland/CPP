@@ -8,8 +8,8 @@ SRC_DIR				= srcs
 OBJ_DIR				= objs
 H_DIR				= incs
 
-SRC_NAME			= main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
-INCS_NAME			= Bureaucrat.h Form.h ShrubberyCreationForm.h RobotomyRequestForm.h PresidentialPardonForm.h
+SRC_NAME			= main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
+INCS_NAME			= Bureaucrat.h Form.h ShrubberyCreationForm.h RobotomyRequestForm.h PresidentialPardonForm.h Intern.h
 
 OBJ_NAME			= $(SRC_NAME:%.cpp=%.o)
 

@@ -5,7 +5,7 @@
 #pragma once
 
 #include <iostream>
-
+#include "Form.h"
 using std::string;
 
 
@@ -19,4 +19,6 @@ public:
 	Intern &operator=( const Intern & );
 
 	Intern( const Intern & );
+
+	Form *makeForm( string formType, string target ) const;
 };
