@@ -5,24 +5,22 @@
 #pragma once
 
 #include <iostream>
-#include <fstream>
 #include "Form.h"
-
 using std::string;
 
 
-class ShrubberyCreationForm : public Form
+class PresidentialPardonForm : public Form
 {
 public:
-	ShrubberyCreationForm();
-	~ShrubberyCreationForm();
+	PresidentialPardonForm();
+	~PresidentialPardonForm();
 
 	/* Class function and other constructors */
 
-	explicit ShrubberyCreationForm( string target );
-	void 	drawTrees( std::ofstream & ) const ;
+	explicit PresidentialPardonForm( string target );
 
 	/* Override */
+
 	void execute(Bureaucrat const & exec) const;
 
 private:
