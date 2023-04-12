@@ -8,15 +8,20 @@
 #include <exception>
 #include <string>
 #include <sstream>
+#include <limits>
+#include <stdint.h>
+#include <cmath>
 using std::string;
 using std::cout;
 using std::endl;
+using std::numeric_limits;
 
 # define INT 0
 # define FLOAT 1
 # define DOUBLE 2
 # define CHAR 3
 # define ERROR 4
+
 
 class ScalarConversion
 {
@@ -34,4 +39,6 @@ private:
 	static void convertFloat(string litteral);
 	static void convertDouble(string litteral);
 	static void convertChar(string litteral);
+
+
 };
