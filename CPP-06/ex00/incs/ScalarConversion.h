@@ -20,7 +20,8 @@ using std::numeric_limits;
 # define FLOAT 1
 # define DOUBLE 2
 # define CHAR 3
-# define ERROR 4
+# define EXCEPTION 4
+# define ERROR 5
 
 
 class ScalarConversion
@@ -29,6 +30,7 @@ public:
 	static void convert( string litteral );
 private:
 	static int findEntryType(string litteral) ;
+	static bool checkLitteralException( string litteral );
 
 	static bool checkInt(string litteral) ;
 	static bool checkFloat(string litteral) ;

@@ -9,6 +9,8 @@ void ScalarConversion::convert( string litteral )
 {
 	switch ( findEntryType( litteral ) )
 	{
+		case EXCEPTION:
+			break;
 		case DOUBLE:
 		{
 			convertDouble( litteral );
@@ -32,11 +34,12 @@ void ScalarConversion::convert( string litteral )
 		default:
 			cout << "Unknown Entry type" << endl;
 	}
-
 }
 
 int ScalarConversion::findEntryType(string litteral)
 {
+	if (checkLitteralException( litteral ))
+		return EXCEPTION;
 	if (checkInt(litteral))
 		return INT;
 	else if(checkChar(litteral))
@@ -51,9 +54,18 @@ int ScalarConversion::findEntryType(string litteral)
 
 void ScalarConversion::convertInt(string litteral)
 {
+	int realTypeLitteral;
+	std::istringstream iss(litteral);
+	iss >> realTypeLitteral;
 
-	(void)litteral;
-	cout << "ConvertToInt" << endl;
+	if ( std::isprint(static_cast<char>(realTypeLitteral)))
+		cout << "char: " << static_cast<char>(realTypeLitteral) << endl;
+	else
+		cout << "char: impossible" << endl;
+	cout << "int: " << static_cast<int>(realTypeLitteral) << endl;
+	cout << "float: " << static_cast<float>(realTypeLitteral) << ".0f" << endl;
+	cout << "double: " << static_cast<double>(realTypeLitteral) << ".0" << endl;
+
 }
 
 void ScalarConversion::convertFloat(string litteral)
@@ -70,20 +82,37 @@ void ScalarConversion::convertFloat(string litteral)
 		cout << "int: " << static_cast<int>(realTypeLitteral) << endl;
 	else
 		cout << "int: impossible" << endl;
+	cout << "float: " << static_cast<float>(realTypeLitteral) << "f" << endl;
 	cout << "double: " << static_cast<double>(realTypeLitteral) << endl;
 }
 
 void ScalarConversion::convertDouble(string litteral)
 {
-	(void)litteral;
-	cout << "ConvertToDouble" << endl;
+	double realTypeLitteral;
+	std::istringstream iss(litteral);
+	iss >> realTypeLitteral;
 
+	if ( std::isprint(static_cast<char>(realTypeLitteral)))
+		cout << "char: " << static_cast<char>(realTypeLitteral) << endl;
+	else
+		cout << "char: impossible" << endl;
+	if ( std::abs(realTypeLitteral) < std::numeric_limits<int>::max())
+		cout << "int: " << static_cast<int>(realTypeLitteral) << endl;
+	else
+		cout << "int: impossible" << endl;
+	cout << "float: " << static_cast<float>(realTypeLitteral) << "f" << endl;
+	cout << "double: " << static_cast<double>(realTypeLitteral) << ".0" << endl;
 }
 
 void ScalarConversion::convertChar(string litteral)
 {
-	(void)litteral;
-	cout << "ConvertToChar" << endl;
+	char realTypeLitteral;
+	std::istringstream iss(litteral);
+	iss >> realTypeLitteral;
+	cout << "char: " << realTypeLitteral << endl;
+	cout << "int: " << static_cast<int>(realTypeLitteral) << endl;
+	cout << "float: " << static_cast<float>(realTypeLitteral) << ".0f" << endl;
+	cout << "double: " << static_cast<double>(realTypeLitteral) << ".0" << endl;
 }
 
 bool ScalarConversion::checkInt(string litteral)
@@ -147,6 +176,27 @@ bool ScalarConversion::checkChar(string litteral)
 
 		if ( !ss.fail() )
 			return true;
+	}
+	return false;
+}
+
+bool ScalarConversion::checkLitteralException( string litteral )
+{
+	if (litteral == "nanf" || litteral == "nan")
+	{
+		cout << "char: impossible" << endl;
+		cout << "int: impossible" << endl;
+		cout << "float: nan" << endl;
+		cout << "double: nanf" << endl;
+		return true;
+	}
+	else if (litteral == "-inf" || litteral == "+inf" || litteral == "+inff" || litteral == "-inff")
+	{
+		cout << "char: impossible" << endl;
+		cout << "int: impossible" << endl;
+		cout << "float: " << litteral[0] << "inf" << endl;
+		cout << "double: " << litteral[0] << "inff" << endl;
+		return true;
 	}
 	return false;
 }
