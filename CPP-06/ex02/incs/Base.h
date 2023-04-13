@@ -7,10 +7,15 @@
 #include <iostream>
 
 using std::string;
-
+using std::cout;
+using std::endl;
 
 class Base
 {
 public:
-	virtual ~Base();
+	virtual ~Base() {};
 };
+
+Base * generate(void);
+void identify(Base *p);
+void identify(Base &p);

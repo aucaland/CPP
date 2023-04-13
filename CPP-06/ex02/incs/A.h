@@ -12,12 +12,4 @@ using std::string;
 
 class A : public Base
 {
-public:
-	A();
-
-	~A();
-
-	A &operator=( const A & );
-
-	A( const A & );
 };

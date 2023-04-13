@@ -8,7 +8,7 @@ SRC_DIR				= srcs
 OBJ_DIR				= objs
 H_DIR				= incs
 
-SRC_NAME			= main.cpp Base.cpp A.cpp B.cpp C.cpp
+SRC_NAME			= main.cpp Base.cpp
 INCS_NAME			= Base.h A.h B.h C.h
 
 OBJ_NAME			= $(SRC_NAME:%.cpp=%.o)
