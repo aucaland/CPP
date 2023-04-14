@@ -6,6 +6,7 @@
 #include <iostream>
 #include <typeinfo>
 #include <exception>
+#include <cstdlib>
 using std::endl;
 using std::cout;
 
