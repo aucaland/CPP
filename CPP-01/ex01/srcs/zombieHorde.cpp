@@ -18,7 +18,7 @@ Zombie *Zombie::zombieHorde(int N, string name)
 	for (int i = 0; i < N; i++)
 	{
 		horde[i].setName(name);
-		horde[i].index = i + 1;
+		horde[i]._index = i + 1;
 	}
 	return horde;
 }

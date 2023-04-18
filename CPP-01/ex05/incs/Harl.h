@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:09:00 by aurel             #+#    #+#             */
-/*   Updated: 2023/03/18 15:25:58 by aurel            ###   ########.fr       */
+/*   Updated: 2023/04/18 16:22:59 by aucaland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define CPP_HARL_H
 
 #include <iostream>
+#include <stdlib.h>
 using std::cout;
 using std::endl;
 using std::string;

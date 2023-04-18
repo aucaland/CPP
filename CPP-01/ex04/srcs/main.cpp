@@ -55,7 +55,6 @@ int main(int ac, char **av)
 	}
 	while (getline(input_file, line))
 	{
-
 		size_t pos = line.find(s1);
 		while (pos != string::npos)
 		{

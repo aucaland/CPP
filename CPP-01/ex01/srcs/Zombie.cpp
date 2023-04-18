@@ -21,7 +21,7 @@ Zombie::Zombie()
 
 Zombie::~Zombie()
 {
-	std::cout << this->index << " " << this->_name << ZOMBIE_DEATH <<
+	std::cout << this->_index << " " << this->_name << ZOMBIE_DEATH <<
 	std::endl;
 }
 
@@ -33,4 +33,8 @@ void Zombie::announce()
 void	Zombie::setName(string name)
 {
 	this->_name = name;
+}
+
+int Zombie::getIndex() {
+	return this->_index;
 }

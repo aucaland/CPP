@@ -14,6 +14,7 @@
 #define CPP_HARL_H
 
 #include <iostream>
+#include <stdlib.h>
 using std::cout;
 using std::endl;
 using std::string;

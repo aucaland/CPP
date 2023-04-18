@@ -6,7 +6,6 @@
 #define CPP_00_CONTACT_HPP
 
 #include <iostream>
-//#include "PhoneBook.hpp"
 using std::string;
 
 class Contact
