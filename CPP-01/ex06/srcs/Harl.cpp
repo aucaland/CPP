@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 14:08:55 by aurel             #+#    #+#             */
-/*   Updated: 2023/03/18 15:44:05 by aurel            ###   ########.fr       */
+/*   Updated: 2023/04/19 11:43:52 by aucaland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,36 +45,33 @@ void	Harl::error()
 
 void	Harl::complain(std::string level)
 {
+	int i = 0;
+
 	string levels_array[] = { "DEBUG", "INFO", "WARNING", "ERROR"};
 	void (Harl::*funcPtr[])() = { &Harl::debug, &Harl::info,
 								  &Harl::warning,
 								  &Harl::error};
-	for (int i = 0; i < 4; i++)
+	while ( i < 4 && level != levels_array[i] )
+		i++;
+	switch (i)
 	{
-		if (levels_array[i] == level)
-		{
-			switch (i)
-			{
-				case 0:
-					for (int j = 0; j < 4; j++)
-						(this->*funcPtr[j])();
-					break;
-				case 1:
-					for (int j = 1; j < 4; j++)
-						(this->*funcPtr[j])();
-					break;
-				case 2:
-					for (int j = 2; j < 4; j++)
-						(this->*funcPtr[j])();
-					break;
-				case 3:
-					(this->*funcPtr[3])();
-					break;
-				default:
-					cout << "[ Probably complaining about insignificant "
-							"problems ]" << endl;
-			}
-		}
+		case 0:
+			for (int j = 0; j < 4; j++)
+				(this->*funcPtr[j])();
+			break;
+		case 1:
+			for (int j = 1; j < 4; j++)
+				(this->*funcPtr[j])();
+			break;
+		case 2:
+			for (int j = 2; j < 4; j++)
+				(this->*funcPtr[j])();
+			break;
+		case 3:
+			(this->*funcPtr[3])();
+			break;
+		default:
+			cout << "[ Probably complaining about insignificant "
+					"problems ]" << endl;
 	}
 }
-
