@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 16:46:13 by aurel             #+#    #+#             */
-/*   Updated: 2023/03/19 14:56:55 by aurel            ###   ########.fr       */
+/*   Updated: 2023/04/25 14:19:28 by aucaland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define CPP_FIXED_H
 
 #include <iostream>
-
+# define MASK_FRAC 0xFF
 class Fixed
 {
 public :

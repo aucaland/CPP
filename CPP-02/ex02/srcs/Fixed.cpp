@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 16:46:23 by aurel             #+#    #+#             */
-/*   Updated: 2023/03/19 14:56:15 by aurel            ###   ########.fr       */
+/*   Updated: 2023/04/25 15:06:00 by aucaland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,12 +134,12 @@ bool Fixed::operator!=(const Fixed &other) const
 
 Fixed Fixed::operator+(const Fixed &other) const
 {
-	return (Fixed(this->toFloat() + other.toFloat()));
+	return (Fixed(this->_fixedPoint + other._fixedPoint));
 }
 
 Fixed Fixed::operator-(const Fixed &other) const
 {
-	return Fixed(this->toFloat() - other.toFloat());
+	return Fixed(this->_fixedPoint - other._fixedPoint);
 }
 
 Fixed Fixed::operator/(const Fixed &other) const
@@ -149,7 +149,19 @@ Fixed Fixed::operator/(const Fixed &other) const
 
 Fixed Fixed::operator*(const Fixed &other) const
 {
-	return Fixed(this->toFloat() * other.toFloat());
+	int otherInt = other._fixedPoint >> other._nbrFracBit;
+	int thisInt = this->_fixedPoint >> this->_nbrFracBit;
+	int otherFrac = other._fixedPoint & MASK_FRAC;
+	int thisFrac = this->_fixedPoint & MASK_FRAC;
+	int fixedResult = 0;
+	Fixed res;
+	fixedResult += (otherInt * thisInt) << other._nbrFracBit;
+	fixedResult += (otherFrac * thisInt);
+	fixedResult += (otherInt * thisFrac);
+	fixedResult += ((otherFrac * thisFrac) >> this->_nbrFracBit) & MASK_FRAC;
+	res.setRawBits(fixedResult);
+
+	return res;
 }
 
 Fixed &Fixed::min(Fixed &fixedOne, Fixed &fixedTwo)
@@ -189,7 +201,7 @@ Fixed &Fixed::operator++(void)
 Fixed Fixed::operator++(int)
 {
 	Fixed tmp(*this);
-	tmp._fixedPoint++;
+	this->_fixedPoint++;
 	return tmp;
 }
 
@@ -202,6 +214,6 @@ Fixed &Fixed::operator--(void)
 Fixed Fixed::operator--(int)
 {
 	Fixed tmp(*this);
-	tmp._fixedPoint--;
+	this->_fixedPoint--;
 	return tmp;
 }
