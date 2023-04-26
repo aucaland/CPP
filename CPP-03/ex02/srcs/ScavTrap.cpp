@@ -35,10 +35,10 @@ ScavTrap::ScavTrap(string name) : ClapTrap(name)
 	cout << "ScavTrap [ " << this->_name << " ] constructor called" << endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap( other )
-{
-	cout << "Copy constructor ScavTrap [ " << this->_name << " ] called" << endl;
-}
+//ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap( other )
+//{
+//	cout << "Copy constructor ScavTrap [ " << this->_name << " ] called" << endl;
+//}
 
 //ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 //{

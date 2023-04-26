@@ -35,10 +35,10 @@ FragTrap::FragTrap(string name) : ClapTrap(name)
 	cout << "\033[1m\033[32mFragTrap\033[0m\033[0m [ " << this->_name << " ] constructor called" << endl;
 }
 
-FragTrap::FragTrap(const FragTrap &other) : ClapTrap( other )
-{
-	cout << "Copy constructor \033[1m\033[32mFragTrap\033[0m\033[0m [ " << this->_name << " ] called" << endl;
-}
+//FragTrap::FragTrap(const FragTrap &other) : ClapTrap( other )
+//{
+//	cout << "Copy constructor \033[1m\033[32mFragTrap\033[0m\033[0m [ " << this->_name << " ] called" << endl;
+//}
 
 //FragTrap &FragTrap::operator=(const FragTrap &other)
 //{

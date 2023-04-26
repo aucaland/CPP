@@ -35,10 +35,10 @@ FragTrap::FragTrap(string name) : ClapTrap(name)
 	cout << "FragTrap [ " << this->_name << " ] constructor called" << endl;
 }
 
-FragTrap::FragTrap(const FragTrap &other) : ClapTrap( other )
-{
-	cout << "Copy constructor FragTrap [ " << this->_name << " ] called" << endl;
-}
+//FragTrap::FragTrap(const FragTrap &other) : ClapTrap( other )
+//{
+//	cout << "Copy constructor FragTrap [ " << this->_name << " ] called" << endl;
+//}
 
 //FragTrap &FragTrap::operator=(const FragTrap &other)
 //{
@@ -46,8 +46,7 @@ FragTrap::FragTrap(const FragTrap &other) : ClapTrap( other )
 //	ad1 = this;
 //	ad2 = (ClapTrap *) &other;
 //	*ad1 = *ad2;
-//// Dans le cas d'une surdefinition de l'operateur par la classe Scav
-//// Utile si l'on doit la redefinir dans le cas de nouveaux attributs.
+//// in case of overload definition of copy constructor or assignement .
 //	cout << "Constructor assignement FragTrap called" << endl;
 //	return *this;
 //}

@@ -6,7 +6,7 @@
 /*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:50:30 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/20 13:16:26 by aucaland         ###   ########.fr       */
+/*   Updated: 2023/04/26 15:05:11 by aucaland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ using std::string;
 
 class ClapTrap {
 private :
-	string	_name;
-	unsigned int		_hitPoint;
-	int 	_energyPoint;
+	string			_name;
+	unsigned int	_hitPoint;
+	int 			_energyPoint;
 	unsigned int 	_attackDamage;
 
 public :

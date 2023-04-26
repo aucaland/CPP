@@ -20,7 +20,7 @@ class FragTrap : public ClapTrap
 public:
 	~FragTrap();
 	FragTrap( string name );
-	FragTrap( const FragTrap & other );
+//	FragTrap( const FragTrap & other );
 //	FragTrap& operator=( const FragTrap & );
 	void highFivesGuys();
 	void attack( const string &target );

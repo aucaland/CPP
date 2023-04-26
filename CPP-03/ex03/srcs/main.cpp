@@ -15,9 +15,9 @@
 int main()
 {
 //	 Virtual purpose;
-	ClapTrap* test1 = new FragTrap("toto");
-	test1->attack("truc");
-	delete test1;
+//	ClapTrap* test1 = new FragTrap("toto");
+//	test1->attack("truc");
+//	delete test1;
 	DiamondTrap scavOne( "Macron" );
 	DiamondTrap scavThree( "Benne a ordures");
 	DiamondTrap scavTwo(scavThree);
