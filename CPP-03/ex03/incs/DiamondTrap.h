@@ -25,7 +25,6 @@ public:
 	~DiamondTrap();
 	DiamondTrap( string name );
 //	DiamondTrap &operator=( const DiamondTrap & );
-//
 //	DiamondTrap( const DiamondTrap & );
 	void 	attack( const string & target );
 	void 	whoAmI();
