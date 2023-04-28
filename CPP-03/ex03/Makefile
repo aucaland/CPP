@@ -1,4 +1,4 @@
-NAME				= FragTrap
+NAME				= ItsWeird
 
 CC					= c++
 FLAGS				= -Wall -Wextra -Werror -Wshadow -std=c++98
