@@ -1,4 +1,4 @@
-NAME				= BitcoinEx
+NAME				= RPN
 
 CC					= c++
 FLAGS				= -Wall -Wextra -Werror -std=c++98
@@ -8,8 +8,8 @@ SRC_DIR				= srcs
 OBJ_DIR				= objs
 H_DIR				= incs
 
-SRC_NAME			= BitcoinExchange.cpp main.cpp
-INCS_NAME			= BitcoinExchange.h
+SRC_NAME			= RPN.cpp main.cpp
+INCS_NAME			= RPN.h
 
 OBJ_NAME			= $(SRC_NAME:%.cpp=%.o)
 
