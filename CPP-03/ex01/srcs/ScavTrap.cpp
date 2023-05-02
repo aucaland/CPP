@@ -6,7 +6,7 @@
 /*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:39:59 by aucaland          #+#    #+#             */
-/*   Updated: 2023/04/26 15:15:39 by aucaland         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:23:16 by aucaland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,11 @@ void ScavTrap::attack(const string &target)
 		cout << "No energy point available, attack failed for ScavTrap: " << this->_name << endl;
 		return ;
 	}
+	if (this->_hitPoint <= 0)
+	{
+		cout << "ScavTrap " << this->_name << " is dead" << endl;
+		return ;
+	}
 	this->_energyPoint--;
 	cout << "\033[1mScavTrap " << this->_name << " attacks " << target << \
 			", causing " << this->_attackDamage << " points of damage! Mana remaining: "<< this->_energyPoint << "\033[0m" << endl;
@@ -67,5 +72,15 @@ void ScavTrap::attack(const string &target)
 
 void ScavTrap::guardGate()
 {
+	if (this->_hitPoint <= 0)
+	{
+		cout << "ScavTrap " << this->_name << " is dead" << endl;
+		return ;
+	}
+	if (this->_energyPoint == 0)
+	{
+		cout << "No energy point available, guardGate failed for scavTrap: " << this->_name << endl;
+		return ;
+	}
 	cout << "\033[1mScavTrap :" << this->_name << " is in Gate keeper mode\033[0m" << endl;
 }

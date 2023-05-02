@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:39:59 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/22 11:10:02 by aurel            ###   ########.fr       */
+/*   Updated: 2023/05/02 11:23:16 by aucaland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ ScavTrap::ScavTrap()
 	this->_hitPoint = 100;
 	this->_energyPoint = 50;
 	this->_attackDamage = 20;
+	this->_name = "default";
 	cout << "Constructor ScavTrap [ " << this->_name << " ] called" << endl;
 }
 
@@ -50,13 +51,18 @@ ScavTrap::ScavTrap(string name) : ClapTrap(name)
 //// Utile si l'on doit la redefinir dans le cas de nouveaux attributs.
 //	cout << "Constructor assignement Scavtrap called" << endl;
 //	return *this;
-//}
+//}}
 
 void ScavTrap::attack(const string &target)
 {
 	if (this->_energyPoint == 0)
 	{
 		cout << "No energy point available, attack failed for ScavTrap: " << this->_name << endl;
+		return ;
+	}
+	if (this->_hitPoint <= 0)
+	{
+		cout << "ScavTrap " << this->_name << " is dead" << endl;
 		return ;
 	}
 	this->_energyPoint--;
@@ -66,5 +72,15 @@ void ScavTrap::attack(const string &target)
 
 void ScavTrap::guardGate()
 {
-	cout << "ScavTrap :" << this->_name << " is in Gate keeper mode" << endl;
+	if (this->_hitPoint <= 0)
+	{
+		cout << "ScavTrap " << this->_name << " is dead" << endl;
+		return ;
+	}
+	if (this->_energyPoint == 0)
+	{
+		cout << "No energy point available, guardGate failed for ScavTrap: " << this->_name << endl;
+		return ;
+	}
+	cout << "\033[1mScavTrap :" << this->_name << " is in Gate keeper mode\033[0m" << endl;
 }

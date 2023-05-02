@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 23:30:24 by aurel             #+#    #+#             */
-/*   Updated: 2023/03/22 11:10:02 by aurel            ###   ########.fr       */
+/*   Updated: 2023/05/02 11:23:16 by aucaland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ void FragTrap::attack(const string &target)
 		cout << "No energy point available, attack failed for FragTrap: " << this->_name << endl;
 		return ;
 	}
+	if (this->_hitPoint <= 0)
+	{
+		cout << "FragTrap " << this->_name << " is dead" << endl;
+		return ;
+	}
 	this->_energyPoint--;
 	cout << "\033[1mFragTrap " << this->_name << " attacks " << target << \
 			", causing " << this->_attackDamage << " points of damage! Mana remaining: "<< this->_energyPoint << "\033[0m" << endl;
@@ -65,5 +70,15 @@ void FragTrap::attack(const string &target)
 
 void FragTrap::highFivesGuys()
 {
+	if (this->_hitPoint <= 0)
+	{
+		cout << "FragTrap " << this->_name << " is dead" << endl;
+		return ;
+	}
+	if (this->_energyPoint == 0)
+	{
+		cout << "No energy point available, HighFive failed for FragTrap: " << this->_name << endl;
+		return ;
+	}
 	cout << "\033[1mFragTrap :" << this->_name << " asks for a High Fives\033[0m" << endl;
 }

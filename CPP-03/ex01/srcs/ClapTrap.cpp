@@ -58,9 +58,14 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 
 void ClapTrap::attack(const string &target)
 {
-	if (this->_energyPoint == 0)
+	if (this->_energyPoint <= 0)
 	{
 		cout << "No energy point available, attack failed" << endl;
+		return ;
+	}
+	if (this->_hitPoint <= 0)
+	{
+		cout << "ClapTrap " << this->_name << " is dead" << endl;
 		return ;
 	}
 	this->_energyPoint--;
@@ -70,7 +75,11 @@ void ClapTrap::attack(const string &target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
+	if (this->_hitPoint <= 0)
+		cout << "ClapTrap " << this->_name << " cannot take damage, he is already dead" << endl;
 	this->_hitPoint -= amount;
+	if (this->_hitPoint >= 429496729)
+		this->_hitPoint = 0;
 	cout << "ClapTrap " << this->_name << " take " << amount << \
 			" damage, remaining health : " << this->_hitPoint << endl;
 }
@@ -80,6 +89,11 @@ void ClapTrap::beRepaired(unsigned int amount)
 	if (this->_energyPoint == 0)
 	{
 		cout << "No energy point available, repair failed" << endl;
+		return ;
+	}
+	if (this->_hitPoint <= 0)
+	{
+		cout << "ClapTrap " << this->_name << " is dead" << endl;
 		return ;
 	}
 	this->_energyPoint--;

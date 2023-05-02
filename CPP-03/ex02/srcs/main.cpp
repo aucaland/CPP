@@ -6,7 +6,7 @@
 /*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:19:53 by aucaland          #+#    #+#             */
-/*   Updated: 2023/04/26 15:29:44 by aucaland         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:29:21 by aucaland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,20 @@
 int main()
 {
 
-	FragTrap fragOne( "Macron" );
-	FragTrap fragThree( "Benne a ordures");
-//	FragTrap fragTwo(fragThree);
-//	FragTrap test;
+	FragTrap FragOne( "Bocal" );
+	FragTrap FragTwo( "Le Freeze");
+	FragTrap FragThree( "Le Global Random");
+	FragTrap test;
 
-//	test = fragTwo;
-	fragOne.attack( "La ZAD de Notre Dame des Landes");
-	fragOne.attack( " les retraites");
-//	fragTwo.attack( "Darmanin");
-	fragThree.attack( "la Macronie");
-//	test.attack("dans le vent");
-	fragThree.attack( "la Macronie");
-	fragThree.highFivesGuys();
+	test = FragThree;
+	FragTrap test2( test );
+	FragTwo.attack( "Le Global Random" );
+	FragOne.attack( "Le Freeze");
+	FragOne.attack( " Le Tuto cub3d");
+	test.attack("Bocal");
+	test.attack("dans le vent");
+	test2.attack( "pour rien");
+	FragThree.highFivesGuys();
 
 	return 0;
 }

@@ -19,11 +19,10 @@ private :
 	string _name;
 	DiamondTrap();
 
-
 public:
 
 	~DiamondTrap();
-	DiamondTrap( string name );
+	explicit DiamondTrap( string name );
 //	DiamondTrap &operator=( const DiamondTrap & );
 //	DiamondTrap( const DiamondTrap & );
 	void 	attack( const string & target );

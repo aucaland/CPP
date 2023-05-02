@@ -6,7 +6,7 @@
 /*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:19:53 by aucaland          #+#    #+#             */
-/*   Updated: 2023/04/26 15:19:18 by aucaland         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:19:28 by aucaland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,20 @@ int main()
 //	test3->attack("truc");
 //	delete test3;
 
-//	ScavTrap scavOne( "Macron" );
-	ScavTrap scavThree( "Benne a ordures");
-//	ScavTrap scavTwo(scavThree);
+	ScavTrap scavOne( "Bocal" );
+	ScavTrap scavTwo( "Le Freeze");
+	ScavTrap scavThree( "Le Global Random");
 	ScavTrap test;
-//
+
 	test = scavThree;
 	ScavTrap test2( test );
-//	scavOne.attack( "La ZAD de Notre Dame des Landes");
-//	scavOne.attack( " les retraites");
-//	scavTwo.attack( "Darmanin");
-//	scavThree.attack( "la Macronie");
+	scavTwo.attack( "Le Global Random" );
+	scavOne.attack( "Le Freeze");
+	scavOne.attack( " Le Tuto cub3d");
+	test.attack("Bocal");
 	test.attack("dans le vent");
 	test2.attack( "pour rien");
 	test2.guardGate();
-//	scavThree.attack( "la Macronie");
-//
+
 	return 0;
 }
