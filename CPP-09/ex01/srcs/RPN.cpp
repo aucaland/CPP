@@ -8,6 +8,8 @@ using std::cout;
 using std::endl;
 
 const string RPN::validArgs = "*/+-0123456789";
+const string RPN::operands = "0123456789";
+const string RPN::operators = "*/+-";
 
 RPN::RPN() {
 	cout << "Constructor RPN called" << endl;
@@ -18,12 +20,21 @@ RPN::~RPN() {
 }
 
 RPN::RPN(const RPN &other) {
+	this->_result = other._result;
+	this->_execStack = other._execStack;
+	this->_consecutivOperandCount = other._consecutivOperandCount;
+	this->_numberOfOperand = other._numberOfOperand;
 	cout << "Copy constructor RPN called" << endl;
 }
 
 RPN &RPN::operator=(const RPN &other) {
 	if (this != &other)
+	{
 		this->_result = other._result;
+		this->_execStack = other._execStack;
+		this->_consecutivOperandCount = other._consecutivOperandCount;
+		this->_numberOfOperand = other._numberOfOperand;
+	}
 	cout << "Constructor assignement RPN called" << endl;
 	return *this;
 }
@@ -43,38 +54,53 @@ bool RPN::tooMuchConsecutivOperand() {
 bool RPN::rpnIsValid( char c )
 {
 	if (!ValidArg( c ))
+	{
+		cout << "Invalid arguments, allowed: '+-*/0123456789'" << endl;
 		return false;
+	}
 	return true;
 }
 
-RPN::RPN( char *rpnExpression ) : _consecutivOperandCount(0), _numberOfOperand(0), _result(NULL)
+RPN::RPN( char *rpnExpression ) : _consecutivOperandCount(0), _numberOfOperand(0), _result("")
 {
+	cout << "RPN char * constructor called with : '" << rpnExpression << "'" << endl;
 	rpn(rpnExpression);
 }
 
 void RPN::rpn( char *rpnExpression )
 {
 	string rpnStringExpression(rpnExpression);
+	if (rpnStringExpression.empty())
+	{
+		cout << "Arg is empty" << endl;
+		return ;
+	}
 	string::iterator it;
 	for (it = rpnStringExpression.begin(); it != rpnStringExpression.end(); it++)
 	{
 		while( it != rpnStringExpression.end() && *it == ' ' )
 			it++;
-		if (it == rpnStringExpression.end() && checkEnd())
+		if ((it == rpnStringExpression.end() && checkEnd()) || !rpnIsValid( *it ))
 			return ;
-		if ( rpnIsValid( *it ) && isOperand( *it ) && !tooMuchConsecutivOperand())
+		if (isOperand( *it ) && !tooMuchConsecutivOperand())
 		{
 			this->_numberOfOperand++;
 			_execStack.push( *it - 48 );
 		}
-		else if ( rpnIsValid( *it ) && isOperator( *it ) && !tooMuchOperators())
+		else if (isOperator( *it ) && !tooMuchOperators())
+		{
+			std::stringstream ss;
+
 			performOperation( *it );
+			ss << this->_execStack.top();
+			this->_result = ss.str();
+		}
 	}
 }
 
 bool RPN::isOperand( char c )
 {
-	if (operands.find(c))
+	if (operands.find(c) != string::npos)
 	{
 		this->_numberOfOperand++;
 		return true;
@@ -84,12 +110,14 @@ bool RPN::isOperand( char c )
 
 bool RPN::isOperator( char c )
 {
-	return (operators.find(c));
+	if (operators.find(c) != string::npos)
+		return true;
+	return false;
 }
 
 bool RPN::checkEnd()
 {
-	if(this->_result == NULL)
+	if(this->_result.empty())
 	{
 		cout << "Wrong expression" << endl;
 		return false;
@@ -100,7 +128,10 @@ bool RPN::checkEnd()
 bool RPN::tooMuchOperators()
 {
 	if (_numberOfOperand < 2)
+	{
+		cout << "Wrong Expression: One operator is always linked by two expression ('1 2 +' or '1 2 + 2 +' are valid, '1 2 + +' is not)" << endl;
 		return true;
+	}
 	_numberOfOperand--;
 	return false;
 }
@@ -109,7 +140,9 @@ void RPN::performOperation( char c )
 {
 	if (this->_execStack.size() < 2)
 	{
-		cout << "Wrong Expression: One operator is always linked by two expression ('1 2 +' or '1 2 + 2 + are valid, '1 2 + +' is not)"
+		cout << "Wrong Expression: One operator is always linked by two expression ('1 2 +' or '1 2 + 2' + are valid, '1 2 + +' is not)" << endl;
+		this->~RPN();
+		exit(1);
 	}
 	int topElem = this->_execStack.top();
 	this->_execStack.pop();
@@ -121,14 +154,17 @@ void RPN::performOperation( char c )
 		case '+':
 		{
 			this->_execStack.push( secondElem + topElem );
+			break;
 		}
 		case '-':
 		{
 			this->_execStack.push( secondElem - topElem );
+			break;
 		}
 		case '*':
 		{
 			this->_execStack.push( secondElem * topElem );
+			break;
 		}
 		case '/':
 		{
@@ -139,6 +175,7 @@ void RPN::performOperation( char c )
 				cout << "Error, some division by 0" << endl;
 				exit(1);
 			}
+			break;
 		}
 		default:
 		{
@@ -146,4 +183,9 @@ void RPN::performOperation( char c )
 			exit(1);
 		}
 	}
+}
+
+string RPN::getResult() const
+{
+	return this->_result;
 }
