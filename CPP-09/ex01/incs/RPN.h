@@ -10,22 +10,34 @@
 
 using std::string;
 
-
 class RPN
 {
 private:
+	static string const 				validArgs;
+	static string const 				operators;
+	static string const 				operands;
 	string const						_inverted_expression;
-	int 								_tmp;
-	unsigned int						_consecutivIdenticalArgCount;
-	std::stack<int, std::deque<int> >	_execStack;
+	string 								_tmp;
+	unsigned int						_numberOfOperand;
+	unsigned int						_consecutivOperandCount;
+	string 								*_result;
+	std::stack<int>						_execStack;
 	RPN();
 public:
 	~RPN();
 
 	RPN &operator=(const RPN &);
 	RPN(const RPN &);
-	bool checkValidArg();
-	bool checkConsecutivNumberArg();
+	RPN( char *rpnExpression );
+	bool ValidArg( char c );
+	bool tooMuchConsecutivOperand();
+	bool rpnIsValid( char c );
+	void rpn( char *rpnExpression );
+	bool isOperand( char c );
+	bool isOperator( char c);
+	bool checkEnd();
+	bool tooMuchOperators();
+	void performOperation( char c );
 };
 
 
