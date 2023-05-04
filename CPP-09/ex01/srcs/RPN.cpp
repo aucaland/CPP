@@ -47,7 +47,11 @@ bool RPN::ValidArg( char c ) {
 
 bool RPN::tooMuchConsecutivOperand() {
 	if (++this->_consecutivOperandCount >= 3)
-		return true;
+	{
+		cout << "Wrong Expression: One operator is always linked by two expression ('1 2 +' or '1 2 + 2 +' are valid, '1 2 + +' is not)" << endl;
+		this->~RPN();
+		exit(1);
+	}
 	return false;
 }
 
@@ -83,10 +87,7 @@ void RPN::rpn( char *rpnExpression )
 		if ((it == rpnStringExpression.end() && checkEnd()) || !rpnIsValid( *it ))
 			return ;
 		if (isOperand( *it ) && !tooMuchConsecutivOperand())
-		{
-			this->_numberOfOperand++;
 			_execStack.push( *it - 48 );
-		}
 		else if (isOperator( *it ) && !tooMuchOperators())
 		{
 			std::stringstream ss;
@@ -111,7 +112,10 @@ bool RPN::isOperand( char c )
 bool RPN::isOperator( char c )
 {
 	if (operators.find(c) != string::npos)
+	{
+		this->_consecutivOperandCount--;
 		return true;
+	}
 	return false;
 }
 
@@ -127,12 +131,13 @@ bool RPN::checkEnd()
 
 bool RPN::tooMuchOperators()
 {
-	if (_numberOfOperand < 2)
+	if (this->_numberOfOperand < 2)
 	{
 		cout << "Wrong Expression: One operator is always linked by two expression ('1 2 +' or '1 2 + 2 +' are valid, '1 2 + +' is not)" << endl;
-		return true;
+		this->~RPN();
+		exit(1);
 	}
-	_numberOfOperand--;
+	this->_numberOfOperand--;
 	return false;
 }
 
@@ -173,6 +178,7 @@ void RPN::performOperation( char c )
 			else
 			{
 				cout << "Error, some division by 0" << endl;
+				this->~RPN();
 				exit(1);
 			}
 			break;
@@ -180,6 +186,7 @@ void RPN::performOperation( char c )
 		default:
 		{
 			cout << "Wrong operator: " << c << endl;
+			this->~RPN();
 			exit(1);
 		}
 	}
