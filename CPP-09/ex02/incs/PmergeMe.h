@@ -9,6 +9,9 @@
 #include <list>
 #include <vector>
 #include <cstdlib>
+#include <exception>
+#include "errors.h"
+#include <sstream>
 
 
 using std::string;
@@ -21,18 +24,28 @@ class PmergeMe
 public:
 	PmergeMe();
 	~PmergeMe();
-	PmergeMe( char ** elemToMerge );
+	PmergeMe( char ** sequence, int argc );
 	PmergeMe &operator=(const PmergeMe &);
 	PmergeMe(const PmergeMe &);
 
-	void checkError( char *sequence );
-	void fillPairedLists( char *sequence );
-	
-	void insertVector( char *sequence );
+	void checkError( string elem, int argc );
+	void fillPairedLists( string elem );
+	void insertVector( string elem );
+
+	bool isNumber( string elem );
 
 private:
-	list<int> sortedList;
-	list<int> *pairedList;
-	vector<int> sortedVector;
+	list<int>	sortedList;
+	list<int>	*pairedLists;
+	vector<int>	sortedVector;
+	int 		sequenceSize;
+
+class parsingException : public std::exception
+{
+public:
+	parsingException( const char* messageError ) {};
+	virtual const char* what() const throw();
+};
+
 };
 
