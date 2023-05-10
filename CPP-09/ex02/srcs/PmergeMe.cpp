@@ -25,29 +25,20 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
 }
 
 PmergeMe::PmergeMe(char **sequence, int argc) : sequenceSize(argc - 1), pairedLists(NULL) {
-	string	str[argc - 1];
+	string	str;
 	int i = 1;
-	int j = 0;
 
 	while ( i < argc )
 	{
-		str[i - 1] = string( sequence[i] );
-		checkError( str[i - 1], argc );
+		int toInt;
+
+		str = string( sequence[i] );
+		checkError( str, argc );
+		std::stringstream ss( str );
+		ss >> toInt;
+		this->fullList.push_back( toInt );
 		i++;
 	}
-
-	this->pairedLists = new list<int>[this->sequenceSize];
-	do
-	{
-		int toInt;
-		std::stringstream ss( str[j] );
-		ss >> toInt;
-
-		this->pairedLists[j] = list<int>();
-		this->pairedLists[j].push_back( toInt );
-		this->pairedLists[j + 1].push_back( toInt );
-	}
-	while ( j + 2 < sequenceSize);
 }
 
 void PmergeMe::checkError( string elem, int argc ) {
@@ -79,4 +70,28 @@ bool PmergeMe::isNumber( string elem )
 			return false;
 	}
 	return true
+}
+
+void PmergeMe::listWay()
+{
+	int j = 0;
+
+	this->pairedLists = new list<int>[this->sequenceSize / 2];
+	std::list<int>::iterator it = this->fullList.begin();
+	for (; it != this->fullList.end(); it++)
+	{
+		this->pairedLists[j] = list<int>();
+		this->pairedLists[j++].push_back( *it );
+		it++;
+		if ( it != this->fullList.end() )
+		{
+			this->pairedLists[j++].push_back(*it);
+			it++;
+		}
+	}
+}
+
+void PmergeMe::vectorWay()
+{
+
 }

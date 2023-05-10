@@ -28,6 +28,8 @@ public:
 	PmergeMe &operator=(const PmergeMe &);
 	PmergeMe(const PmergeMe &);
 
+	void listWay();
+	void vectorWay();
 	void checkError( string elem, int argc );
 	void fillPairedLists( string elem );
 	void insertVector( string elem );
@@ -35,7 +37,7 @@ public:
 	bool isNumber( string elem );
 
 private:
-	list<int>	sortedList;
+	list<int>	fullList;
 	list<int>	*pairedLists;
 	vector<int>	sortedVector;
 	int 		sequenceSize;
