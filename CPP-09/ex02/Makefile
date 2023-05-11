@@ -8,8 +8,8 @@ SRC_DIR				= srcs
 OBJ_DIR				= objs
 H_DIR				= incs
 
-SRC_NAME			= RPN.cpp main.cpp
-INCS_NAME			= RPN.h
+SRC_NAME			= main.cpp PmergeMe.cpp
+INCS_NAME			= PmergeMe.h errors.h
 
 OBJ_NAME			= $(SRC_NAME:%.cpp=%.o)
 

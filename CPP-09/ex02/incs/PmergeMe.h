@@ -22,32 +22,39 @@ using std::vector;
 class PmergeMe
 {
 public:
-	PmergeMe();
+
 	~PmergeMe();
 	PmergeMe( char ** sequence, int argc );
-	PmergeMe &operator=(const PmergeMe &);
-	PmergeMe(const PmergeMe &);
+//	PmergeMe &operator=(const PmergeMe &);
+//	PmergeMe(const PmergeMe &);
 
 	void listWay();
-	void vectorWay();
-	void checkError( string elem, int argc );
-	void fillPairedLists( string elem );
-	void insertVector( string elem );
+//	void vectorWay();
+	void checkError( string elem, int argc , int i);
+	void fillPairedLists();
+//	void insertVector( string elem );
+	int setPairedListQuantity() const;
+	list<int>::iterator getSortedListIt();
+	list<int>::iterator getEndSortedListIt();
 
 	bool isNumber( string elem );
 
 private:
-	list<int>	fullList;
-	list<int>	*pairedLists;
-	vector<int>	sortedVector;
+	PmergeMe();
 	int 		sequenceSize;
+	list<int>	*pairedLists;
+	int 		pairedListQuantity;
+	list<int>	fullList;
+	vector<int>	sortedVector;
 
 class parsingException : public std::exception
-{
-public:
-	parsingException( const char* messageError ) {};
-	virtual const char* what() const throw();
-};
+	{
+	public:
+		explicit parsingException( const char* messageError );
+		virtual const char* what() const throw();
+	private:
+		const char* msg;
+	};
 
 };
 

@@ -15,47 +15,75 @@ PmergeMe::~PmergeMe() {
 	cout << "Destructor PmergeMe called" << endl;
 }
 
-PmergeMe::PmergeMe(const PmergeMe &other) {
-	cout << "Copy constructor PmergeMe called" << endl;
-}
+//PmergeMe::PmergeMe(const PmergeMe &other) {
+//	cout << "Copy constructor PmergeMe called" << endl;
+//}
+//
+//PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
+//	cout << "Constructor assignement PmergeMe called" << endl;
+//	return *this;
+//}
 
-PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
-	cout << "Constructor assignement PmergeMe called" << endl;
-	return *this;
-}
-
-PmergeMe::PmergeMe(char **sequence, int argc) : sequenceSize(argc - 1), pairedLists(NULL) {
+PmergeMe::PmergeMe(char **sequence, int argc) : sequenceSize(argc - 1), pairedLists(NULL), pairedListQuantity(setPairedListQuantity()) {
 	string	str;
-	int i = 1;
+	int i = 0;
 
+	checkError( str, argc , i);
+	setPairedListQuantity();
 	while ( i < argc )
 	{
 		int toInt;
 
-		str = string( sequence[i] );
-		checkError( str, argc );
-		std::stringstream ss( str );
-		ss >> toInt;
-		this->fullList.push_back( toInt );
+		if (i > 0)
+		{
+			str = string( sequence[i] );
+			checkError( str, argc , i);
+			std::stringstream ss( str );
+			ss >> toInt;
+			this->fullList.push_back( toInt );
+		}
 		i++;
 	}
+	listWay();
 }
 
-void PmergeMe::checkError( string elem, int argc ) {
-	if ( elem.empty() )
-		throw parsingException( ERROR_EMPTY_STRING );
-	else if ( !isNumber( elem ) )
-		throw parsingException( ERROR_INV_ARGUMENT );
-	else if ( argc == 2 )
+void PmergeMe::checkError( string elem, int argc , int i) {
+	int toInt;
+	std::stringstream ss( elem );
+	if ( argc <= 2 )
 		throw parsingException( ERROR_NOT_ENOUGH_ARG );
+	else if ( elem.empty() && i != 0) {
+		throw parsingException( ERROR_EMPTY_STRING );
+	}
+	else if ( !isNumber( elem ) && i != 0) {
+		throw parsingException( ERROR_INV_ARGUMENT );
+	}
+	ss >> toInt;
+	if ( ss.fail() && i != 0)
+		throw parsingException( ERROR_OUT_OF_INT_RANGE );
+
 }
 
-void PmergeMe::insertVector( string elem ) {
+//void PmergeMe::insertVector( string elem ) {
+//	return ;
+//}
 
-}
+void PmergeMe::fillPairedLists() {
+	int j = 0;
 
-void PmergeMe::fillPairedLists( string elem ) {
-
+	this->pairedLists = new list<int>[this->pairedListQuantity];
+	std::list<int>::iterator it = this->fullList.begin();
+	for (; it != this->fullList.end(); it++)
+	{
+		this->pairedLists[j] = list<int>();
+		this->pairedLists[j].push_back( *it );
+		it++;
+		if ( it != this->fullList.end() )
+		{
+			this->pairedLists[j].push_back(*it );
+			j++;
+		}
+	}
 }
 
 bool PmergeMe::isNumber( string elem )
@@ -69,29 +97,46 @@ bool PmergeMe::isNumber( string elem )
 		if (!isdigit(elem[i]))
 			return false;
 	}
-	return true
+	return true;
 }
 
 void PmergeMe::listWay()
 {
-	int j = 0;
-
-	this->pairedLists = new list<int>[this->sequenceSize / 2];
-	std::list<int>::iterator it = this->fullList.begin();
-	for (; it != this->fullList.end(); it++)
-	{
-		this->pairedLists[j] = list<int>();
-		this->pairedLists[j++].push_back( *it );
-		it++;
-		if ( it != this->fullList.end() )
-		{
-			this->pairedLists[j++].push_back(*it);
-			it++;
-		}
+	fillPairedLists();
+	this->fullList.clear();
+	for (int i = 0; i < this->pairedListQuantity; i++) {
+		this->pairedLists[i].sort();
 	}
+	for (int i = 0; i < this->pairedListQuantity ; ++i) {
+		this->fullList.merge(this->pairedLists[i]);
+	}
+	delete[] this->pairedLists;
 }
 
-void PmergeMe::vectorWay()
-{
+//void PmergeMe::vectorWay()
+//{
+//	return ;
+//}
 
+list<int>::iterator PmergeMe::getSortedListIt() {
+	return this->fullList.begin();
+}
+
+list<int>::iterator PmergeMe::getEndSortedListIt() {
+	return this->fullList.end();
+}
+
+int PmergeMe::setPairedListQuantity() const{
+	if (this->sequenceSize % 2 != 0)
+		return this->sequenceSize / 2 + 1;
+	else
+		return sequenceSize / 2;
+}
+
+PmergeMe::parsingException::parsingException(const char *messageError) {
+	this->msg = messageError;
+}
+
+const char *PmergeMe::parsingException::what() const throw() {
+	return this->msg;
 }
