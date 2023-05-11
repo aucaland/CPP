@@ -29,7 +29,6 @@ PmergeMe::PmergeMe(char **sequence, int argc) : sequenceSize(argc - 1), pairedLi
 	int i = 0;
 
 	checkError( str, argc , i);
-	setPairedListQuantity();
 	while ( i < argc )
 	{
 		int toInt;
@@ -75,12 +74,12 @@ void PmergeMe::fillPairedLists() {
 	std::list<int>::iterator it = this->fullList.begin();
 	for (; it != this->fullList.end(); it++)
 	{
+		int i = 0;
 		this->pairedLists[j] = list<int>();
-		this->pairedLists[j].push_back( *it );
-		it++;
-		if ( it != this->fullList.end() )
+		while ( it != this->fullList.end() && i++ < CHUNCK_SIZE )
 		{
-			this->pairedLists[j].push_back(*it );
+			this->pairedLists[j].push_back( *it );
+			it++;
 			j++;
 		}
 	}
@@ -110,6 +109,7 @@ void PmergeMe::listWay()
 	for (int i = 0; i < this->pairedListQuantity ; ++i) {
 		this->fullList.merge(this->pairedLists[i]);
 	}
+	std::cout << *this->fullList.begin() << endl;
 	delete[] this->pairedLists;
 }
 
@@ -127,10 +127,12 @@ list<int>::iterator PmergeMe::getEndSortedListIt() {
 }
 
 int PmergeMe::setPairedListQuantity() const{
-	if (this->sequenceSize % 2 != 0)
-		return this->sequenceSize / 2 + 1;
+	if (this->sequenceSize <= CHUNCK_SIZE)
+		return 1;
+	else if (this->sequenceSize % CHUNCK_SIZE != 0)
+		return this->sequenceSize / CHUNCK_SIZE + 1;
 	else
-		return sequenceSize / 2;
+		return this->sequenceSize / 32;
 }
 
 PmergeMe::parsingException::parsingException(const char *messageError) {
