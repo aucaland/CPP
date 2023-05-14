@@ -28,12 +28,14 @@ public:
 //	PmergeMe &operator=(const PmergeMe &);
 //	PmergeMe(const PmergeMe &);
 
-	void listWay();
-//	void vectorWay();
-	void checkError( string elem, int argc , int i);
-	void fillPairedLists();
-//	void insertVector( string elem );
-	int setPairedListQuantity() const;
+	void	listWay();
+	void	listInsertionSort();
+	void	listMerge();
+//	void	vectorWay();
+	void	checkError( string elem, int argc , int i);
+	void	fillPairedLists();
+//	void	insertVector( string elem );
+	int		setPairedListQuantity() const;
 	list<int>::iterator getSortedListIt();
 	list<int>::iterator getEndSortedListIt();
 

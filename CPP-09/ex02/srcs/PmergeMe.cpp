@@ -80,8 +80,9 @@ void PmergeMe::fillPairedLists() {
 		{
 			this->pairedLists[j].push_back( *it );
 			it++;
-			j++;
 		}
+		it--;
+		j++;
 	}
 }
 
@@ -103,13 +104,11 @@ void PmergeMe::listWay()
 {
 	fillPairedLists();
 	this->fullList.clear();
-	for (int i = 0; i < this->pairedListQuantity; i++) {
-		this->pairedLists[i].sort();
-	}
-	for (int i = 0; i < this->pairedListQuantity ; ++i) {
-		this->fullList.merge(this->pairedLists[i]);
-	}
-	std::cout << *this->fullList.begin() << endl;
+	listInsertionSort();
+	if (this->pairedListQuantity == 1)
+		this->fullList.insert(this->fullList.end(), this->pairedLists[0].begin(), this->pairedLists[0].end());
+	else
+		listMerge();
 	delete[] this->pairedLists;
 }
 
@@ -133,6 +132,31 @@ int PmergeMe::setPairedListQuantity() const{
 		return this->sequenceSize / CHUNCK_SIZE + 1;
 	else
 		return this->sequenceSize / 32;
+}
+
+void PmergeMe::listInsertionSort()
+{
+	for ( int i = 0; i < this->pairedListQuantity; i++ )
+	{
+		std::list<int>::iterator it = this->pairedLists[i].begin()++;
+		for ( ; it != this->pairedLists[i].end() ; it++ )
+		{
+			list<int>::iterator jt = it;
+			while ( jt != this->pairedLists[i].begin() && *jt < *(--jt) )
+			{
+				jt++;
+				std::list<int>::iterator swapt = --jt;
+				++jt;
+				std::iter_swap( jt, swapt);
+				jt--;
+			}
+		}
+	}
+}
+
+void PmergeMe::listMerge()
+{
+
 }
 
 PmergeMe::parsingException::parsingException(const char *messageError) {
