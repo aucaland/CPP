@@ -156,6 +156,25 @@ void PmergeMe::listInsertionSort()
 
 void PmergeMe::listMerge()
 {
+	int i = 1;
+	for (; i <= this->pairedListQuantity; i++)
+	{
+		if (this->pairedLists[0].size() == (size_t)this->sequenceSize)
+			break;
+		std::list<int>::iterator it2 = this->pairedLists[i].begin();
+		for (; it2 != this->pairedLists[i].end(); ++it2) {
+			std::list<int>::iterator it = this->pairedLists[0].begin();
+			while ( it != this->pairedLists[0].end() && *it2 < *it )
+				it++;
+			std::cerr << "put:" << *it2 << " after:" << *it << std::endl;
+			this->pairedLists[0].insert(it, 1, *it2);
+//			for (std::list<int>::iterator test = this->pairedLists[0].begin(); test != this->pairedLists[0].end() ; ++test) {
+//				std::cerr << *test << std::flush;
+//			}
+//			std::cerr << std::endl;
+		}
+	}
+	this->fullList.insert(this->fullList.end(), this->pairedLists[0].begin(), this->pairedLists[0].end());
 
 }
 
