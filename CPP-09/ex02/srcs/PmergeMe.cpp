@@ -29,6 +29,9 @@ PmergeMe::PmergeMe(char **sequence, int argc) : sequenceSize(argc - 1), pairedLi
 	int i = 0;
 
 	checkError( str, argc , i);
+    clock_t startListTime;
+	clock_t endListTime;
+//    clock_t startVectTime = clock();
 	while ( i < argc )
 	{
 		int toInt;
@@ -40,10 +43,21 @@ PmergeMe::PmergeMe(char **sequence, int argc) : sequenceSize(argc - 1), pairedLi
 			std::stringstream ss( str );
 			ss >> toInt;
 			this->fullList.push_back( toInt );
+			this->fullListWithLib.push_back( toInt );
+			this->originalListCopy.push_back( toInt );
 		}
 		i++;
 	}
+	startListTime = clock();
 	listWay();
+	endListTime = clock();
+	this->listTime = static_cast<double>(endListTime - startListTime) / CLOCKS_PER_SEC * 1000000;
+	startListTime = clock();
+	listWayWithLib();
+	endListTime = clock();
+	this->listTimeWithLib = static_cast<double>(endListTime - startListTime) / CLOCKS_PER_SEC * 1000000;
+	printContainers();
+	printTime();
 }
 
 void PmergeMe::checkError( string elem, int argc , int i) {
@@ -90,8 +104,10 @@ bool PmergeMe::isNumber( string elem )
 {
 	size_t i = 0;
 
-	if (elem[i] == '-' || elem[i] == '+')
+	if (elem[i] == '+')
 		i++;
+	else if (elem[i] == '-')
+		return false;
 	for (; i < elem.length(); ++i )
 	{
 		if (!isdigit(elem[i]))
@@ -117,21 +133,13 @@ void PmergeMe::listWay()
 //	return ;
 //}
 
-list<int>::iterator PmergeMe::getSortedListIt() {
-	return this->fullList.begin();
-}
-
-list<int>::iterator PmergeMe::getEndSortedListIt() {
-	return this->fullList.end();
-}
-
 int PmergeMe::setPairedListQuantity() const{
 	if (this->sequenceSize <= CHUNCK_SIZE)
 		return 1;
 	else if (this->sequenceSize % CHUNCK_SIZE != 0)
 		return this->sequenceSize / CHUNCK_SIZE + 1;
 	else
-		return this->sequenceSize / 32;
+		return this->sequenceSize / CHUNCK_SIZE;
 }
 
 void PmergeMe::listInsertionSort()
@@ -164,19 +172,88 @@ void PmergeMe::listMerge()
 		std::list<int>::iterator it2 = this->pairedLists[i].begin();
 		for (; it2 != this->pairedLists[i].end(); ++it2) {
 			std::list<int>::iterator it = this->pairedLists[0].begin();
-			while ( it != this->pairedLists[0].end() && *it2 < *it )
+			while ( it != this->pairedLists[0].end() && *it < *it2 )
 				it++;
-			std::cerr << "put:" << *it2 << " after:" << *it << std::endl;
 			this->pairedLists[0].insert(it, 1, *it2);
-//			for (std::list<int>::iterator test = this->pairedLists[0].begin(); test != this->pairedLists[0].end() ; ++test) {
-//				std::cerr << *test << std::flush;
-//			}
-//			std::cerr << std::endl;
 		}
 	}
 	this->fullList.insert(this->fullList.end(), this->pairedLists[0].begin(), this->pairedLists[0].end());
 
 }
+
+void PmergeMe::printTime() {
+	std::cout << "Time to process a range of " << this->sequenceSize << " elements with Container List: " << this->listTime << " \u00B5s." << std::endl;
+	std::cout << "Time to process a range of " << this->sequenceSize << " elements with Container List and Lib sort/merge: " << this->listTimeWithLib << " \u00B5s." << std::endl;
+}
+
+void PmergeMe::listWayWithLib() {
+
+	fillPairedListsWithLib();
+	this->fullListWithLib.clear();
+	for (int i = 0; i < this->pairedListQuantity; ++i) {
+			this->pairedLists[i].sort();
+	}
+	for (int j = 0; j < this->pairedListQuantity; ++j) {
+		this->fullListWithLib.merge(this->pairedLists[j]);
+	}
+	delete[] this->pairedLists;
+}
+
+void PmergeMe::fillPairedListsWithLib() {
+	int j = 0;
+
+	this->pairedLists = new list<int>[this->pairedListQuantity];
+	std::list<int>::iterator it = this->fullListWithLib.begin();
+	for (; it != this->fullListWithLib.end(); it++)
+	{
+		int i = 0;
+		this->pairedLists[j] = list<int>();
+		while ( it != this->fullListWithLib.end() && i++ < CHUNCK_SIZE )
+		{
+			this->pairedLists[j].push_back( *it );
+			it++;
+		}
+		it--;
+		j++;
+	}
+}
+
+void PmergeMe::printContainers() {
+
+	int counter = 0;
+	int maxPrintable = 100;
+	list<int>::iterator kt = this->originalListCopy.begin();
+	std::cout << "Before: " << std::flush;
+	for (; kt != (this->originalListCopy.end()) ; kt++) {
+		std::cout << *kt << " " << std::flush;
+		if (++counter == maxPrintable)
+			break;
+	}
+	counter = 0;
+	if (maxPrintable < this->sequenceSize)
+		std::cout << "[...]" << std::flush;
+	std::cout << std::endl;
+
+	list<int>::iterator it = this->fullList.begin();
+
+	std::cout << "After: " << std::flush;
+	for (; it != this->fullList.end() ; it++ ) {
+		std::cout << *it << " "<< std::flush;
+		if (++counter == maxPrintable)
+			break;
+	}
+	if (maxPrintable < this->sequenceSize)
+		std::cout << "[...]" << std::flush;
+	std::cout << std::endl;
+
+//	list<int>::iterator jt = this->fullListWithLib.begin();
+//
+//	for (; jt != this->fullListWithLib.end() ; jt++ ) {
+//		std::cout << *jt << " " << std::flush;
+//	}
+//	std::cout << std::endl;
+}
+
 
 PmergeMe::parsingException::parsingException(const char *messageError) {
 	this->msg = messageError;

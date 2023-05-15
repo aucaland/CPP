@@ -12,6 +12,7 @@
 #include <exception>
 #include "errors.h"
 #include <sstream>
+#include <time.h>
 
 
 using std::string;
@@ -29,15 +30,17 @@ public:
 //	PmergeMe(const PmergeMe &);
 
 	void	listWay();
+	void	listWayWithLib();
 	void	listInsertionSort();
 	void	listMerge();
 //	void	vectorWay();
 	void	checkError( string elem, int argc , int i);
 	void	fillPairedLists();
+	void	fillPairedListsWithLib();
 //	void	insertVector( string elem );
+	void	printTime();
+	void 	printContainers();
 	int		setPairedListQuantity() const;
-	list<int>::iterator getSortedListIt();
-	list<int>::iterator getEndSortedListIt();
 
 	bool isNumber( string elem );
 
@@ -46,8 +49,13 @@ private:
 	int 		sequenceSize;
 	list<int>	*pairedLists;
 	int 		pairedListQuantity;
+	list<int>	originalListCopy;
 	list<int>	fullList;
-	vector<int>	sortedVector;
+	list<int>	fullListWithLib;
+	vector<int>	fullVector;
+	double		listTime;
+	double		listTimeWithLib;
+	double		vectTime;
 
 class parsingException : public std::exception
 	{
