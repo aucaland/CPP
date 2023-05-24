@@ -23,7 +23,8 @@ WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other), type(other.type)
 
 WrongCat &WrongCat::operator=(const WrongCat &other)
 {
-	this->type = other.type;
+	if (this != &other)
+		this->type = other.type;
 	cout << "Constructor assignement WrongCat called" << endl;
 	return *this;
 }

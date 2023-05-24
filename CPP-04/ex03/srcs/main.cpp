@@ -6,17 +6,15 @@
 /*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 13:38:12 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/31 13:34:15 by aurel            ###   ########.fr       */
+/*   Updated: 2023/05/24 22:42:44 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "../incs/Ice.h"
 #include "../incs/Cure.h"
-#include "../incs/ICharacter.h"
 #include "../incs/Character.h"
 #include "../incs/MateriaSource.h"
-#include "../incs/IMateriaSource.h"
 
 int main() {
 	IMateriaSource* src = new MateriaSource();

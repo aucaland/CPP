@@ -27,5 +27,5 @@ public:
 	Brain &operator=( const Brain & );
 
 	Brain( const Brain & );
-	string _ideas[100];
+	string ideas[100];
 };

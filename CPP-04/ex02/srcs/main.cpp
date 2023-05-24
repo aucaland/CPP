@@ -24,6 +24,7 @@ int main()
 	////////////////////
 //	Animal notInstantiable;
 	////////////////////
+//	Animal notInstanciable = new Animal();
 	delete j;//should not create a leak
 	delete i;
 	std::cout << "1----------------------" << std::endl;

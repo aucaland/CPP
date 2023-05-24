@@ -29,7 +29,8 @@ WrongAnimal::WrongAnimal(const WrongAnimal &other) : type(other.type)
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)
 {
-	this->type = other.type;
+	if (this != &other)
+		this->type = other.type;
 	cout << "Constructor assignement WrongAnimal called" << endl;
 	return *this;
 }

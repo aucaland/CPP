@@ -23,7 +23,8 @@ Cat::Cat(const Cat &other) : Animal(other), type(other.type)
 
 Cat &Cat::operator=(const Cat &other)
 {
-	this->type = other.type;
+	if (this != &other)
+		this->type = other.type;
 	cout << "Constructor assignement Cat called" << endl;
 	return *this;
 }

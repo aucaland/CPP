@@ -6,7 +6,7 @@
 /*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 15:23:33 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/25 21:58:25 by aurel            ###   ########.fr       */
+/*   Updated: 2023/05/24 21:20:25 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,15 @@ WrongAnimal::WrongAnimal(const WrongAnimal &other) : type(other.type)
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)
 {
-	this->type = other.type;
+	if (this != &other)
+		this->type = other.type;
 	cout << "Constructor assignement WrongAnimal called" << endl;
 	return *this;
 }
 
 void WrongAnimal::makeSound() const
 {
-	cout << ".." << endl;
+	cout << "Wrong animal class sound" << endl;
 }
 
 string WrongAnimal::getType() const

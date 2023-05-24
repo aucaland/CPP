@@ -28,7 +28,7 @@ Brain &Brain::operator=( const Brain &other )
 	if (this == &other)
 		return *this;
 	for (int i = 0; i < 100; i++)
-		this->_ideas[i] = other._ideas[i];
+		this->ideas[i] = other.ideas[i];
 	cout << "Constructor assignement Brain called" << endl;
 	return *this;
 }

@@ -23,7 +23,8 @@ Dog::Dog(const Dog &other) : Animal(other), type(other.type)
 }
 
 Dog &Dog::operator=(const Dog &other) {
-	this->type = other.type;
+	if (this != &other)
+		this->type = other.type;
 	cout << "Constructor assignement Dog called" << endl;
 	return *this;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 15:23:27 by aucaland          #+#    #+#             */
-/*   Updated: 2023/03/27 10:00:26 by aucaland         ###   ########.fr       */
+/*   Updated: 2023/05/24 22:11:30 by aurel            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ public:
 
 	virtual void makeSound() const;
 	virtual string getType() const;
-	virtual	Brain* getBrain() const = 0;
+	virtual	Brain* getBrain() const = 0; //we could just implement this in animal class but its useless (see next exercice)
 protected:
 	string _type;
 };
