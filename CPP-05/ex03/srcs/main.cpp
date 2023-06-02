@@ -9,17 +9,17 @@
 
 int main()
 {
+	AForm *internForm = NULL;
+
 	try
 	{
 		Intern					internSlave;
-		Form *internForm;
 
-		internForm = internSlave.makeForm( "Pform", "Intern");
 		ShrubberyCreationForm		Sform("Sform");
 		RobotomyRequestForm		Rform("target");
 		PresidentialPardonForm		Pform("Pform");
-
-		Bureaucrat samy("Samy", 130);
+		internForm = internSlave.makeForm( "Pform", "Intern");
+		Bureaucrat samy("Samy", 1);
 		Bureaucrat samy2("Samy2", 1);
 		Bureaucrat samy3("Samy3", 1);
 
@@ -34,11 +34,11 @@ int main()
 		samy.executeForm( Sform );
 		samy2.executeForm(Pform);
 		samy.executeForm(Pform);
-
 	}
 	catch (std::exception & e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-
+	if ( internForm )
+		delete internForm;
 }

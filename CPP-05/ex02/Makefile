@@ -1,15 +1,16 @@
 NAME				= Form
 
 CC					= c++
-FLAGS				= -Wall -Wextra -Werror -std=c++98
+FLAGS				= -Wall -Wextra -Werror -std=c++98 -g3
 RM					= rm -rf
 
 SRC_DIR				= srcs
 OBJ_DIR				= objs
 H_DIR				= incs
 
-SRC_NAME			= main.cpp Bureaucrat.cpp Form.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
-INCS_NAME			= Bureaucrat.h Form.h ShrubberyCreationForm.h RobotomyRequestForm.h PresidentialPardonForm.h
+SRC_NAME			= main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+INCS_NAME			= Bureaucrat.h AForm.h ShrubberyCreationForm.h \
+						RobotomyRequestForm.h PresidentialPardonForm.h
 
 OBJ_NAME			= $(SRC_NAME:%.cpp=%.o)
 

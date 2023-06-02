@@ -98,7 +98,7 @@ Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
 
 }
 
-void Bureaucrat::signForm( Form &form )
+void Bureaucrat::signForm( AForm &form )
 {
 	try {
 		form.beSigned(*this);
@@ -110,7 +110,7 @@ void Bureaucrat::signForm( Form &form )
 	}
 }
 
-void Bureaucrat::executeForm( const Form &form )
+void Bureaucrat::executeForm( const AForm &form )
 {
 	try
 	{

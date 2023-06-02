@@ -33,7 +33,7 @@ Intern &Intern::operator=( const Intern &other )
 	return *this;
 }
 
-Form *Intern::makeForm( string formType, string target ) const
+AForm *Intern::makeForm( string formType, string target ) const
 {
 	int i = 0;
 	string arrayFormTypes[] = {"Rform", "Pform", "Sform"};

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aurel <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: aucaland <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 13:38:12 by aucaland          #+#    #+#             */
-/*   Updated: 2023/05/24 22:42:44 by aurel            ###   ########.fr       */
+/*   Updated: 2023/05/25 15:30:19 by aucaland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int main() {
 	src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");
 	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
+
+	me->equip(src->createMateria("ice"));
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 	tmp = src->createMateria("ice");

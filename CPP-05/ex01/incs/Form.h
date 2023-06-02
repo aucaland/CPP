@@ -48,8 +48,6 @@ public:
 	class GradeTooLowException : public std::exception
 	{
 	public:
-		GradeTooLowException( char * msg);
-		virtual ~GradeTooLowException() throw();
 		virtual const char* what() const throw();
 	private:
 		char * Low_msg;

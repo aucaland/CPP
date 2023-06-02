@@ -6,12 +6,12 @@
 
 #include <iostream>
 #include <fstream>
-#include "Form.h"
+#include "AForm.h"
 
 using std::string;
 
 
-class ShrubberyCreationForm : public Form
+class ShrubberyCreationForm : public AForm
 {
 public:
 	ShrubberyCreationForm();

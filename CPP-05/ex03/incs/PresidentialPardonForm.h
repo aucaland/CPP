@@ -5,11 +5,11 @@
 #pragma once
 
 #include <iostream>
-#include "Form.h"
+#include "AForm.h"
 using std::string;
 
 
-class PresidentialPardonForm : public Form
+class PresidentialPardonForm : public AForm
 {
 public:
 	PresidentialPardonForm();

@@ -48,6 +48,7 @@ private:
 	PmergeMe();
 	int 		sequenceSize;
 	list<int>	*pairedLists;
+
 	int 		pairedListQuantity;
 	list<int>	originalListCopy;
 	list<int>	fullList;

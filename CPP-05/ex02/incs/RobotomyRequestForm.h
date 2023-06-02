@@ -5,12 +5,12 @@
 #pragma once
 
 #include <iostream>
-#include "../incs/Form.h"
+#include "../incs/AForm.h"
 
 using std::string;
 
 
-class RobotomyRequestForm : public Form
+class RobotomyRequestForm : public AForm
 {
 public:
 	RobotomyRequestForm();

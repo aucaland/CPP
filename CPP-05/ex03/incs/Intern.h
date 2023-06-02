@@ -5,7 +5,7 @@
 #pragma once
 
 #include <iostream>
-#include "Form.h"
+#include "AForm.h"
 using std::string;
 
 
@@ -20,5 +20,5 @@ public:
 
 	Intern( const Intern & );
 
-	Form *makeForm( string formType, string target ) const;
+	AForm *makeForm( string formType, string target ) const;
 };

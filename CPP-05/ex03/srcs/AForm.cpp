@@ -8,123 +8,104 @@
 using std::cout;
 using std::endl;
 
-Form::Form() : _name("Default"), _isSigned(false), _gradeSign(5), _gradeExec(10)
+AForm::AForm() : _name("Default"), _isSigned(false), _gradeSign(5), _gradeExec(10)
 {
-	cout << "Constructor Form called" << endl;
+	cout << "Constructor AForm called" << endl;
 }
 
-Form::~Form()
+AForm::~AForm()
 {
-	cout << "Destructor Form called" << endl;
+	cout << "Destructor AForm called" << endl;
 }
 
-Form::Form( const Form &other ) : _name(other._name), _isSigned(other._isSigned), _gradeSign(other._gradeSign), _gradeExec(other._gradeExec)
+AForm::AForm( const AForm &other ) : _name(other._name), _isSigned(other._isSigned), _gradeSign(other._gradeSign), _gradeExec(other._gradeExec)
 {
-	cout << "Copy constructor Form called" << endl;
+	cout << "Copy constructor AForm called" << endl;
 }
 
-Form &Form::operator=( const Form &other )
+AForm &AForm::operator=( const AForm &other )
 {
 	if (this != &other)
 		this->_isSigned = other._isSigned;
-	cout << "Copy assignement Form called" << endl;
+	cout << "Copy assignement AForm called" << endl;
 	return *this;
 }
 
-const string Form::getName() const
+const string AForm::getName() const
 {
 	return this->_name;
 }
 
-bool Form::getIsSigned() const
+bool AForm::getIsSigned() const
 {
 	return this->_isSigned;
 }
 
-int Form::getGradSign() const
+int AForm::getGradSign() const
 {
 	return this->_gradeSign;
 }
 
-int Form::getGradExec() const
+int AForm::getGradExec() const
 {
 	return this->_gradeExec;
 }
 
-void Form::beSigned( Bureaucrat &src )
+void AForm::beSigned( Bureaucrat &src )
 {
 	if ( src.getGrade() <= this->_gradeSign )
 		this->_isSigned = true;
 	else
 	{
-		int num = src.getGrade();
-		std::stringstream rank;
-		rank << num;
-		int numTwo = this->_gradeSign;
-		std::stringstream rankSign;
-		rankSign << numTwo;
-		std::string Rank = rank.str();
-		std::string RankSign = rankSign.str();
-		string message = "Bureaucrat " + src.getName() + " of Rank " + Rank +
-									   " need to be rank " + RankSign + " to sign the '" + this->_name + "' form.";
-		char msg[100];
-		msg[99] = '\0';
-		std::strcpy(msg, message.c_str());
-		throw GradeTooLowException(msg);
+		throw GradeTooLowException( );
 	}
 }
 
-Form::Form( const string name, const int rankSign, const int rankExec ) : _name(name), _gradeSign(rankSign), _gradeExec(rankExec)
+AForm::AForm( const string name, const int rankSign, const int rankExec ) : _name(name), _gradeSign(rankSign), _gradeExec(rankExec)
 {
 	if (rankSign < 1 || rankExec < 1) {
 		throw GradeTooHighException((char *)"Rank too High");
 	}
 	if (rankSign > 150 || rankExec > 150) {
-		throw GradeTooLowException((char *)"Rank too low");
+		throw GradeTooLowException( );
 	}
 }
 
-Form::GradeTooLowException::GradeTooLowException( char *msg )
-{
-	this->Low_msg = msg;
-}
-
-Form::GradeTooHighException::GradeTooHighException( char *msg )
+AForm::GradeTooHighException::GradeTooHighException( char *msg )
 {
 	this->High_msg = msg;
 }
 
-const char *Form::GradeTooLowException::what() const throw()
+const char *AForm::GradeTooLowException::what() const throw()
 {
-	return this->Low_msg;
+	return "Bureaucrat Rank is too low to sign Form";
 }
 
-const char *Form::GradeTooHighException::what() const throw()
+AForm::GradeTooLowException::GradeTooLowException() {
+
+}
+
+const char *AForm::GradeTooHighException::what() const throw()
 {
 	return this->High_msg;
 }
 
-Form::GradeTooLowException::~GradeTooLowException() throw()
+AForm::GradeTooHighException::~GradeTooHighException() throw()
 {
 
 }
 
-Form::GradeTooHighException::~GradeTooHighException() throw()
-{
-
-}
-
-std::ostream &operator<<(std::ostream &out, const Form &src) {
-	string isSigned = ". Form is signed";
+std::ostream &operator<<(std::ostream &out, const AForm &src) {
+	string isSigned = ". AForm is signed";
 	if (!src.getIsSigned())
-		isSigned = ". Form is not signed";
-	out << "Form name : " << src.getName() << ". Rank required to sign : " << src.getGradSign();
+		isSigned = ". AForm is not signed";
+	out << "AForm name : " << src.getName() << ". Rank required to sign : " << src.getGradSign();
 	out << ", Rank required to execute : " << src.getGradExec() << isSigned << endl;
 
 	return out;
 }
 
-const char *Form::FormNotSigned::what() const throw()
+const char *AForm::FormNotSigned::what() const throw()
 {
-	return "Form is not signed";
+	return "AForm is not signed";
 }

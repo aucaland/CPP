@@ -38,14 +38,14 @@ Bureaucrat::Bureaucrat( const string name, int grade ) : _grade(grade), _name(na
 	cout << "Constructor (string, int) called, name :" << this->_name << ", Rank : " << this->_grade << endl;
 	if (this->_grade > 150)
 		throw GradeTooLowException((char *)"Min rank is 150");
-	else if (this->_grade < 0)
-		throw GradeTooHighException((char *)"Max rank is 0");
+	else if (this->_grade < 1)
+		throw GradeTooHighException((char *)"Max rank is 1");
 }
 
 void Bureaucrat::incrementGrade()
 {
-	if (this->_grade == 0)
-		throw GradeTooHighException((char *)"Rank is 0, which is max");
+	if (this->_grade == 1)
+		throw GradeTooHighException((char *)"Rank is 1, which is max");
 	else
 		this->_grade--;
 }

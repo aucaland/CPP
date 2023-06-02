@@ -12,7 +12,7 @@ class Bureaucrat;
 using std::string;
 
 
-class Form
+class AForm
 {
 private:
 	string const _name;
@@ -22,10 +22,10 @@ private:
 public:
 	/* Canonical */
 
-	Form();
-	~Form();
-	Form &operator=( const Form & );
-	Form( const Form & );
+	AForm() ;
+	~AForm();
+	AForm &operator=( const AForm & );
+	AForm( const AForm & );
 
 	/* Accessors */
 
@@ -36,7 +36,7 @@ public:
 
 	/* Form function && other constructors */
 
-	Form( string name, int rankSign, int rankExec );
+	AForm( string name, int rankSign, int rankExec );
 	void beSigned( Bureaucrat & );
 
 	virtual void	execute(Bureaucrat const & executor) const = 0;
@@ -56,8 +56,6 @@ public:
 	class GradeTooLowException : public std::exception
 	{
 	public:
-		GradeTooLowException( char * msg );
-		virtual ~GradeTooLowException() throw();
 		virtual const char* what() const throw();
 	private:
 		char * Low_msg;
@@ -72,4 +70,4 @@ public:
 
 /* Override operator */
 
-std::ostream  &operator<<(std::ostream &out, const Form &src);
+std::ostream  &operator<<(std::ostream &out, const AForm &src);

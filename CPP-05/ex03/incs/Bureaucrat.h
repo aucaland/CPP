@@ -5,8 +5,8 @@
 #pragma once
 
 #include <iostream>
-#include "Form.h"
-class Form;
+#include "AForm.h"
+class AForm;
 #include <exception>
 
 using std::string;
@@ -34,8 +34,8 @@ public:
 	void 			incrementGrade();
 	void 			decreamentGrade();
 
-	void signForm( Form &form );
-	void executeForm( Form const & form );
+	void signForm( AForm &form );
+	void executeForm( AForm const & form );
 
 
 class GradeTooHighException : public std::exception

@@ -7,7 +7,7 @@
 using std::cout;
 using std::endl;
 
-ShrubberyCreationForm::ShrubberyCreationForm() : Form("ShruberryForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShruberryForm", 145, 137)
 {
 	cout << "Constructor ShrubberyCreationForm called" << endl;
 }
@@ -17,7 +17,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 	cout << "Destructor ShrubberyCreationForm called" << endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(string target) : Form("ShruberryForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(string target) : AForm("ShruberryForm", 145, 137)
 {
 	this->_target = target;
 }
@@ -27,7 +27,7 @@ void ShrubberyCreationForm::execute( const Bureaucrat &exec ) const
 	if (!this->getIsSigned())
 		throw FormNotSigned();
 	else if (exec.getGrade() > this->getGradExec())
-		throw GradeTooLowException((char *)"Grade too low for exec ShrubberyForm");
+		throw GradeTooLowException( );
 	string filename = this->_target + "_shrubbery";
 	std::ofstream  file(filename.c_str());
 	if (!file.is_open())

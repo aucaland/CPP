@@ -7,11 +7,11 @@ int main()
 {
 	try
 	{
-		Bureaucrat empty("creep", 0);
+		Bureaucrat empty("creep", 1);
 		std::cout << empty << std::endl;
 //		empty.incrementGrade();
-//		Bureaucrat empty2("creep", 151);
-//		Bureaucrat empty3("creep", -10);
+		Bureaucrat empty2("creep", 151);
+		Bureaucrat empty3("creep", -10);
 		Bureaucrat samy("samy", 150);
 		samy.decreamentGrade();
 	}

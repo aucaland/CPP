@@ -5,6 +5,7 @@
 #include <cstring>
 #include "../incs/AForm.h"
 
+
 using std::cout;
 using std::endl;
 
@@ -56,21 +57,7 @@ void AForm::beSigned( Bureaucrat &src )
 	if ( src.getGrade() <= this->_gradeSign )
 		this->_isSigned = true;
 	else
-	{
-		int num = src.getGrade();
-		std::stringstream rank;
-		rank << num;
-		int numTwo = this->_gradeSign;
-		std::stringstream rankSign;
-		rankSign << numTwo;
-		std::string Rank = rank.str();
-		std::string RankSign = rankSign.str();
-		string message = "Bureaucrat " + src.getName() + " of Rank " + Rank +
-									   " need to be rank " + RankSign + " to sign the '" + this->_name + "' AForm.";
-		char *msg = new char[message.length() + 1];
-		std::strcpy(msg, message.c_str());
-		throw GradeTooLowException(msg);
-	}
+		throw GradeTooLowException();
 }
 
 AForm::AForm( const string name, const int rankSign, const int rankExec ) : _name(name), _gradeSign(rankSign), _gradeExec(rankExec)
@@ -79,14 +66,8 @@ AForm::AForm( const string name, const int rankSign, const int rankExec ) : _nam
 		throw GradeTooHighException((char *)"Rank too High");
 	}
 	if (rankSign > 150 || rankExec > 150) {
-		throw GradeTooLowException((char *)"Rank too low");
+		throw GradeTooLowException( );
 	}
-}
-
-AForm::GradeTooLowException::GradeTooLowException( char *msg )
-{
-	this->Low_msg = msg;
-
 }
 
 AForm::GradeTooHighException::GradeTooHighException( char *msg )
@@ -96,21 +77,12 @@ AForm::GradeTooHighException::GradeTooHighException( char *msg )
 
 const char *AForm::GradeTooLowException::what() const throw()
 {
-	return this->Low_msg;
+	return "Bureaucrat Rank is too low to sign Form";
 }
 
 const char *AForm::GradeTooHighException::what() const throw()
 {
 	return this->High_msg;
-}
-
-AForm::GradeTooLowException::~GradeTooLowException() throw()
-{
-	int i = 0;
-	while ( this->Low_msg && this->Low_msg[i] )
-		i++;
-	if ( i != 0 )
-		delete this->Low_msg;
 }
 
 AForm::GradeTooHighException::~GradeTooHighException() throw()
