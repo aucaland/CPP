@@ -27,8 +27,12 @@ using std::numeric_limits;
 class ScalarConversion
 {
 public:
-	static void convert( string litteral );
+	static void convert( string litteral );//TODO : canonical
+	ScalarConversion &operator=(const ScalarConversion &);
+	ScalarConversion(const ScalarConversion &);
 private:
+	ScalarConversion();
+	~ScalarConversion();
 	static int findEntryType(string litteral) ;
 	static bool checkLitteralException( string litteral );
 
@@ -41,6 +45,4 @@ private:
 	static void convertFloat(string litteral);
 	static void convertDouble(string litteral);
 	static void convertChar(string litteral);
-
-
 };

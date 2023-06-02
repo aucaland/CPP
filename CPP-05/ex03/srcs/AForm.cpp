@@ -3,7 +3,7 @@
 //
 
 #include <cstring>
-#include "../incs/Form.h"
+#include "../incs/AForm.h"
 
 using std::cout;
 using std::endl;

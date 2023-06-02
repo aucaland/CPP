@@ -18,6 +18,9 @@ public:
 	static uintptr_t serialize(Data* ptr);
 	static Data* deserialize(uintptr_t raw);
 
+	Serializer &operator=(const Serializer &);
+	Serializer(const Serializer &);
+
 private:
 	Serializer();
 	~Serializer();
