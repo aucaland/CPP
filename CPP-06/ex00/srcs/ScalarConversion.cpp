@@ -72,6 +72,7 @@ void ScalarConversion::convertFloat(string litteral)
 {
 	float realTypeLitteral;
 	std::istringstream iss(litteral);
+	std::size_t pos = litteral.find('.');
 	iss >> realTypeLitteral;
 
 	if ( std::isprint(static_cast<char>(realTypeLitteral)))
@@ -82,14 +83,21 @@ void ScalarConversion::convertFloat(string litteral)
 		cout << "int: " << static_cast<int>(realTypeLitteral) << endl;
 	else
 		cout << "int: impossible" << endl;
-	cout << "float: " << static_cast<float>(realTypeLitteral) << "f" << endl;
-	cout << "double: " << static_cast<double>(realTypeLitteral) << endl;
+	if ( ( pos == std::string::npos ) || (( litteral[pos + 1] == '0' ) && !isdigit(litteral[pos + 2]) ))
+		cout << "float: " << static_cast<float>(realTypeLitteral) << ".0f" << endl;
+	else
+		cout << "float: " << static_cast<float>(realTypeLitteral) << "f" << endl;
+	if ( ( pos == std::string::npos ) || (( litteral[pos + 1] == '0' )  && !isdigit(litteral[pos + 2])) )
+		cout << "double: " << static_cast<double>(realTypeLitteral) << ".0" << endl;
+	else
+		cout << "double: " << static_cast<double>(realTypeLitteral) << endl;
 }
 
 void ScalarConversion::convertDouble(string litteral)
 {
 	double realTypeLitteral;
 	std::istringstream iss(litteral);
+	std::size_t pos = litteral.find('.');
 	iss >> realTypeLitteral;
 
 	if ( std::isprint(static_cast<char>(realTypeLitteral)))
@@ -100,8 +108,14 @@ void ScalarConversion::convertDouble(string litteral)
 		cout << "int: " << static_cast<int>(realTypeLitteral) << endl;
 	else
 		cout << "int: impossible" << endl;
-	cout << "float: " << static_cast<float>(realTypeLitteral) << "f" << endl;
-	cout << "double: " << static_cast<double>(realTypeLitteral) << ".0" << endl;
+	if ( ( pos == std::string::npos) || (( litteral[pos + 1] == '0' )  && !isdigit(litteral[pos + 2])) )
+		cout << "float: " << static_cast<float>(realTypeLitteral) << ".0f" << endl;
+	else
+		cout << "float: " << static_cast<float>(realTypeLitteral) << "f" << endl;
+	if ( ( pos == std::string::npos ) || (( litteral[pos + 1] == '0' ) && !isdigit(litteral[pos + 2])) )
+		cout << "double: " << static_cast<double>(realTypeLitteral) << ".0" << endl;
+	else
+		cout << "double: " << static_cast<double>(realTypeLitteral) << endl;
 }
 
 void ScalarConversion::convertChar(string litteral)
