@@ -3,6 +3,7 @@
 //
 
 #include "../incs/Span.h"
+#include <istream>
 
 using std::cout;
 using std::endl;
@@ -35,7 +36,7 @@ int Span::longestSpan(){
         std::sort(this->_vectorContainer.begin(), this->_vectorContainer.end());
         return this->_vectorContainer.back() - this->_vectorContainer.front();
     }
-    throw std::runtime_error("Vector size is <= 1");
+    throw std::runtime_error("Vector size is <= 1\n");
 }
 
 int Span::shortestSpan() {
@@ -45,7 +46,7 @@ int Span::shortestSpan() {
         std::vector<int>::iterator it;
         std::vector<int>::iterator max_it = std::max_element(this->_vectorContainer.begin(), this->_vectorContainer.end());
         std::vector<int>::iterator min_it = std::min_element(this->_vectorContainer.begin(), this->_vectorContainer.end());
-        int shortestWay = max_it - min_it;
+        int shortestWay = *max_it - *min_it;
         int range = 0;
         for ( it = this->_vectorContainer.begin(); it != this->_vectorContainer.end() - 1 ; it++) {
             {
@@ -56,7 +57,7 @@ int Span::shortestSpan() {
         return shortestWay;
 
     }
-    throw std::runtime_error("Vector size is <= 1");
+    throw std::runtime_error("Vector size is <= 1\n");
 }
 
 void Span::addNumber(int number) {
