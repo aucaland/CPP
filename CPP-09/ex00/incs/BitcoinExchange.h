@@ -5,7 +5,7 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
+#include <map>
 #include <string>
 
 using std::string;
@@ -13,13 +13,14 @@ using std::string;
 
 class BitcoinExchange
 {
+private:
+	std::map<string, int>	bitcoinData;
+
+
 public:
 	BitcoinExchange();
-
 	~BitcoinExchange();
-
 	BitcoinExchange &operator=(const BitcoinExchange &);
-
 	BitcoinExchange(const BitcoinExchange &);
 };
 
