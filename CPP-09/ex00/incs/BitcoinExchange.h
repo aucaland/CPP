@@ -11,7 +11,6 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include <regex>
 #include "errors.h"
 
 using std::string;
@@ -39,5 +38,3 @@ public:
 
 	BitcoinExchange( const char* fileName );
 };
-
-#endif //CPP_BITCOINEXCHANGE_H

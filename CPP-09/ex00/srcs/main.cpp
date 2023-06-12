@@ -6,10 +6,13 @@
 int main( int argc, char **argv )
 {
 	if ( argc != 2 )
-		throw std::runtime_error(" ./btc filename.txt\n");
+	{
+		std::cout << "Error, one arg needed: './btc filename.txt'" << std::endl;
+		return 0;
+	}
 	try
 	{
-
+		BitcoinExchange( static_cast<const char*>(argv[1]) );
 	}
 	catch ( std::exception &e )
 	{

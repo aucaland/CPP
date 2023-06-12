@@ -5,7 +5,6 @@
 
 /* utils */
 
-# define DATE_PATTERN "^\\d{2}-\\d{2}-\\d{4}\\s$"
 # define DATA_FILE_ERRORS	8
 # define INPUT_ERRORS		9
 
