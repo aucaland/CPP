@@ -9,7 +9,7 @@ OBJ_DIR				= objs
 H_DIR				= incs
 
 SRC_NAME			= BitcoinExchange.cpp main.cpp
-INCS_NAME			= BitcoinExchange.h
+INCS_NAME			= BitcoinExchange.h errors.h
 
 OBJ_NAME			= $(SRC_NAME:%.cpp=%.o)
 

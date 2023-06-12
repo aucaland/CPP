@@ -12,10 +12,9 @@
 #include <string>
 #include <sstream>
 #include <regex>
+#include "errors.h"
 
 using std::string;
-
-# define DATE_PATTERN "^\\d{2}-\\d{2}-\\d{4}\\s$"
 
 class BitcoinExchange
 {
@@ -26,10 +25,12 @@ private:
 	/* Private Methods */
 private:
 	static bool				fileExist( const char* fileName );
-	static std::ifstream	openFile( const char* fileName );
-	static void				formatIsValid( const std::string & );
-	static bool				timestampIsValid( const std::string &timestamp );
-	void					fillMap( std::ifstream file );
+	static int				inputParsing( std::ifstream &fileName );
+	static void				openFile( const char *fileName, std::ifstream *file );
+	static int				timestampIsValid( const std::string &timestamp );
+	static void				errorsManagement( int errorCode );
+	static void				inputFileErrorsManagement( int errorCode, std::string content );
+	int						fillMap( std::ifstream &file );
 public:
 	BitcoinExchange();
 	~BitcoinExchange();
