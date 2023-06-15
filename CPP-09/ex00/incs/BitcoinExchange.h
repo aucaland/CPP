@@ -20,15 +20,15 @@ class BitcoinExchange
 	/* Private attributs */
 private:
 	std::map<string, float>	_bitcoinData;
-
 	/* Private Methods */
 private:
 	static bool				fileExist( const char* fileName );
-	static int				inputParsing( std::ifstream &fileName );
+	int				inputParsing( std::ifstream &fileName );
 	static void				openFile( const char *fileName, std::ifstream *file );
 	static int				timestampIsValid( const std::string &timestamp );
 	static void				errorsManagement( int errorCode );
 	static void				inputFileErrorsManagement( int errorCode, std::string content );
+	void					processData(const std::string& date, float bitcoinQuantity );
 	int						fillMap( std::ifstream &file );
 public:
 	BitcoinExchange();
