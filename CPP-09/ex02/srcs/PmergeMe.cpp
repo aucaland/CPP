@@ -29,8 +29,8 @@ void PmergeMe::printVector() {
 	std::vector<int>::iterator it = this->_vectorElem.begin();
 	std::cout << "After:";
 	for (; it != this->_vectorElem.end() ; ++it) {
-		if ( *it == this->_vectorElem[6] )
-			break ;
+//		if ( *it == this->_vectorElem[6] )
+//			break ;
 		std::cout << " " << *it;
 	}
 	std::cout << "[...]" <<  endl;
@@ -61,9 +61,9 @@ PmergeMe::PmergeMe(char **unsortedElems) : _unsortedElems(unsortedElems) {
 	startClock = clock();
 	sortVector(0, this->_vectorElem.size() - 1);
 	endClock = clock();
-	timeV = ((endClock - startClock) / CLOCKS_PER_SEC);
+	timeV = static_cast<double>(endClock - startClock) / CLOCKS_PER_SEC * 1000000;
 	printVector();
-	std::cout << "TIMEV: " << timeV << std::endl;
+	std::cout << "TIMEV: " << timeV << " µs." << std::endl;
 }
 
 char **PmergeMe::getUnsortedElems(void) const {
@@ -74,8 +74,8 @@ void PmergeMe::printUnsortedElems() {
 	std::vector<int>::iterator it = this->_vectorElem.begin();
 	std::cout << "Before:";
 	for (; it != this->_vectorElem.end() ; ++it) {
-		if ( *it == this->_vectorElem[6] )
-			break ;
+//		if ( *it == this->_vectorElem[6] )
+//			break ;
 		std::cout << " " << *it;
 	}
 	std::cout << "[...]" << endl;
@@ -109,18 +109,36 @@ void PmergeMe::insertionSortVector(int end) {
 void PmergeMe::mergeVector(int begin, int middle, int end) {
 	std::vector<int> leftVec(this->_vectorElem.begin() + begin, this->_vectorElem.begin() + middle + 1);
 	std::vector<int> rightVec(this->_vectorElem.begin() + middle + 1, this->_vectorElem.begin() + end + 1);
-	int i = 0, left = 0, right = 0;
-	while ( left < (int)(this->_vectorElem.size() / 2) && right < (int)(this->_vectorElem.size() - this->_vectorElem.size() / 2)) {
-		if ( leftVec[left] < rightVec[right] )
-			this->_vectorElem[i] = leftVec[left++];
+	int i = begin, right = 0, left = 0, first = middle - begin + 1, second = end - middle;
+	for (; i <= end; ++i) {
+		if (right == second)
+		{
+			this->_vectorElem[i] = leftVec[left];
+			left++;
+		}
+		else if (left == first)
+		{
+			this->_vectorElem[i] = rightVec[right];
+			right++;
+		}
+		else if (rightVec[right] > leftVec[left])
+		{
+			this->_vectorElem[i] = leftVec[left];
+			left++;
+		}
 		else
-			this->_vectorElem[i] = rightVec[right++];
-		i++;
+		{
+			this->_vectorElem[i] = rightVec[right];
+			right++;
+		}
+
 	}
-	while ( left < (int)(this->_vectorElem.size() / 2)) {
-		this->_vectorElem[i++] = leftVec[left++];
-	}
-	while ( right < (int)(this->_vectorElem.size() - this->_vectorElem.size() / 2)) {
-		this->_vectorElem[i++] = leftVec[right++];
-	}
+//	std::vector<int>::iterator it = this->_vectorElem.begin();
+//	std::cout << "TEST:";
+//	for (; it != this->_vectorElem.end() ; ++it) {
+////		if ( *it == this->_vectorElem[6] )
+////			break ;
+//		std::cout << " " << *it;
+//	}
+//	std::cout << "[...]" <<  endl;
 }

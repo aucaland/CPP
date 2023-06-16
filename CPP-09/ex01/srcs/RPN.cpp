@@ -11,7 +11,7 @@ const string RPN::validArgs = "*/+-0123456789";
 const string RPN::operands = "0123456789";
 const string RPN::operators = "*/+-";
 
-RPN::RPN() {
+RPN::RPN() { // TODO: init value
 	cout << "Constructor RPN called" << endl;
 }
 

@@ -5,7 +5,6 @@
 #pragma once
 
 #include <iostream>
-#include <deque>
 #include <stack>
 #include <cstdlib>
 #include <sstream>
