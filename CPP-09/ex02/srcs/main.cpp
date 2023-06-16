@@ -5,9 +5,14 @@
 
 int main(int argc, char **argv)
 {
+	if ( argc < 3 )
+	{
+		std::cout << "Error: invalid arguments, 2 args min." << std::endl;
+		exit(0);
+	}
 	try
 	{
-		PmergeMe Pmerge( argv, argc);
+		PmergeMe Pmerge( argv );
 	}
 	catch (std::exception &e)
 	{

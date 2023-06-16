@@ -6,66 +6,51 @@
 
 #include <iostream>
 #include <algorithm>
-#include <list>
+#include <deque>
 #include <vector>
 #include <cstdlib>
 #include <exception>
-#include "errors.h"
 #include <sstream>
 #include <time.h>
 
 
 using std::string;
-using std::list;
 using std::vector;
 
+# define INSERTION_LIMIT	32
 
 class PmergeMe
 {
+private:
+	char**				_unsortedElems;
+	std::deque<int>		_dequeElems;
+	std::vector<int>	_vectorElem;
+
+	PmergeMe();
+	void	printVector();
+	void	printDq(std::deque<int> &d);
+	void	printUnsortedElems();
+
+	void	parsing();
+	void	sort();
+
+	void	sortVector(int begin, int end);
+	void	insertionSortVector(int end);
+	void	mergeVector(int begin, int middle, int end);
+
+	void	sortDq(int begin, int end);
+	void	insertionDq(int begin, int end);
+	void	mergeDq(int begin, int middle, int end);
+
+
 public:
 
+	char**	getUnsortedElems(void) const;
+
+	PmergeMe( char** unsortedElems );
+	PmergeMe(PmergeMe const &src);
+	PmergeMe&	operator=(PmergeMe const &assign);
 	~PmergeMe();
-	PmergeMe( char ** sequence, int argc );
-//	PmergeMe &operator=(const PmergeMe &);
-//	PmergeMe(const PmergeMe &);
 
-	void	listWay();
-	void	listWayWithLib();
-	void	listInsertionSort();
-	void	listMerge();
-//	void	vectorWay();
-	void	checkError( string elem, int argc , int i);
-	void	fillPairedLists();
-	void	fillPairedListsWithLib();
-//	void	insertVector( string elem );
-	void	printTime();
-	void 	printContainers();
-	int		setPairedListQuantity() const;
-
-	bool isNumber( string elem );
-
-private:
-	PmergeMe();
-	int 		sequenceSize;
-	list<int>	*pairedLists;
-
-	int 		pairedListQuantity;
-	list<int>	originalListCopy;
-	list<int>	fullList;
-	list<int>	fullListWithLib;
-	vector<int>	fullVector;
-	double		listTime;
-	double		listTimeWithLib;
-	double		vectTime;
-
-class parsingException : public std::exception
-	{
-	public:
-		explicit parsingException( const char* messageError );
-		virtual const char* what() const throw();
-	private:
-		const char* msg;
-	};
 
 };
-
