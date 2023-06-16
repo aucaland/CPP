@@ -46,12 +46,8 @@ bool RPN::ValidArg( char c ) {
 }
 
 bool RPN::tooMuchConsecutivOperand() {
-	if (++this->_consecutivOperandCount >= 3)
-	{
-		cout << "Wrong Expression: One operator is always linked by two expression ('1 2 +' or '1 2 + 2 +' are valid, '1 2 + +' is not)" << endl;
-		this->~RPN();
-		exit(1);
-	}
+	if (++this->_consecutivOperandCount > 3)
+		throw std::runtime_error("Wrong Expression: One operator is always linked by two expression ('1 2 +' or '1 2 + 2 +' are valid, '1 2 + +' is not)");
 	return false;
 }
 
@@ -132,11 +128,7 @@ bool RPN::checkEnd()
 bool RPN::tooMuchOperators()
 {
 	if (this->_numberOfOperand < 2)
-	{
-		cout << "Wrong Expression: One operator is always linked by two expression ('1 2 +' or '1 2 + 2 +' are valid, '1 2 + +' is not)" << endl;
-		this->~RPN();
-		exit(1);
-	}
+		throw std::runtime_error("Wrong Expression: One operator is always linked by two expression ('1 2 +' or '1 2 + 2 +' are valid, '1 2 + +' is not)");
 	this->_numberOfOperand--;
 	return false;
 }
@@ -144,11 +136,7 @@ bool RPN::tooMuchOperators()
 void RPN::performOperation( char c )
 {
 	if (this->_execStack.size() < 2)
-	{
-		cout << "Wrong Expression: One operator is always linked by two expression ('1 2 +' or '1 2 + 2' + are valid, '1 2 + +' is not)" << endl;
-		this->~RPN();
-		exit(1);
-	}
+		throw std::runtime_error("Wrong Expression: One operator is always linked by two expression ('1 2 +' or '1 2 + 2 +' are valid, '1 2 + +' is not)");
 	int topElem = this->_execStack.top();
 	this->_execStack.pop();
 	int secondElem = this->_execStack.top();

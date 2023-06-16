@@ -12,8 +12,8 @@ int main(int ac, char **av)
 		RPN rpn(av[1]);
 		cout << rpn.getResult() << endl;
 	}
-	catch (std::exception &)
+	catch (std::exception &e)
 	{
-		cout << "An error occured" << endl;
+		cout << e.what() << endl;
 	}
 }
