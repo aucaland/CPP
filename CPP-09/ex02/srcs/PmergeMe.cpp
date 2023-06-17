@@ -20,6 +20,9 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
 	if (this != &other)
 	{
 		this->_unsortedElems = getUnsortedElems();
+		this->_sequenceSize = other._sequenceSize;
+		this->_dequeElems = other._dequeElems;
+		this->_vectorElem = other._vectorElem;
 	}
 	cout << "Copy assignement PmergeMe called" << endl;
 	return *this;
@@ -29,8 +32,8 @@ void PmergeMe::printVector() {
 	std::vector<int>::iterator it = this->_vectorElem.begin();
 	std::cout << "After:";
 	for (; it != this->_vectorElem.end() ; ++it) {
-//		if ( *it == this->_vectorElem[6] )
-//			break ;
+		if ( *it == this->_vectorElem[10] )
+			break ;
 		std::cout << " " << *it;
 	}
 	std::cout << "[...]" <<  endl;
@@ -49,6 +52,7 @@ void PmergeMe::parsing() {
 		this->_vectorElem.push_back(value);
 		i++;
 	}
+	this->_sequenceSize = i - 1;
 }
 
 PmergeMe::PmergeMe(char **unsortedElems) : _unsortedElems(unsortedElems) {
@@ -64,6 +68,8 @@ PmergeMe::PmergeMe(char **unsortedElems) : _unsortedElems(unsortedElems) {
 	timeV = static_cast<double>(endClock - startClock) / CLOCKS_PER_SEC * 1000000;
 	printVector();
 	std::cout << "TIMEV: " << timeV << " µs." << std::endl;
+	std::cout << "Time to process a range of " << this->_sequenceSize << " elements with Vector: " << timeV << " \u00B5s." << std::endl;
+
 }
 
 char **PmergeMe::getUnsortedElems(void) const {
@@ -74,8 +80,8 @@ void PmergeMe::printUnsortedElems() {
 	std::vector<int>::iterator it = this->_vectorElem.begin();
 	std::cout << "Before:";
 	for (; it != this->_vectorElem.end() ; ++it) {
-//		if ( *it == this->_vectorElem[6] )
-//			break ;
+		if ( *it == this->_vectorElem[10] )
+			break ;
 		std::cout << " " << *it;
 	}
 	std::cout << "[...]" << endl;
@@ -90,7 +96,9 @@ void PmergeMe::sortVector(int begin, int end) {
 		mergeVector( begin, middle, end );
 	}
 	else
+	{
 		insertionSortVector( end );
+	}
 }
 
 void PmergeMe::insertionSortVector(int end) {
