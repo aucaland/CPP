@@ -38,9 +38,9 @@ private:
 	void	insertionSortVector(int end);
 	void	mergeVector(int begin, int middle, int end);
 
-	void	sortDq(int begin, int end);
-	void	insertionDq(int begin, int end);
-	void	mergeDq(int begin, int middle, int end);
+	void	sortDeque(int begin, int end);
+	void	insertionSortDeque(int end);
+	void	mergeDeque(int begin, int middle, int end);
 
 
 public:
