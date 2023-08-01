@@ -23,23 +23,21 @@ private:
 	string const						_inverted_expression;
 	unsigned int						_consecutivOperandCount;
 	unsigned int						_numberOfOperand;
+	unsigned int						_finalNumberOperands;
+	unsigned int						_finalNumberOperators;
 	string 								_result;
 	std::stack<int>						_execStack;
-
+	RPN &operator=(const RPN &);
+	RPN(const RPN &);
 	RPN();
 
 public:
 	~RPN();
-
-	RPN &operator=(const RPN &);
-	RPN(const RPN &);
 	explicit RPN( char *rpnExpression );
-
 	void rpn( char *rpnExpression );
 	void performOperation( char c );
-
 	bool ValidArg( char c );
-	bool tooMuchConsecutivOperand();
+//	bool tooMuchConsecutivOperand();
 	bool rpnIsValid( char c );
 	bool isOperand( char c );
 	bool isOperator( char c );

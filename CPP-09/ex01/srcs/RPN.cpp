@@ -45,11 +45,11 @@ bool RPN::ValidArg( char c ) {
 	return false;
 }
 
-bool RPN::tooMuchConsecutivOperand() {
-	if (++this->_consecutivOperandCount > 3)
-		throw std::runtime_error("Wrong Expression: One operator is always linked by two expression ('1 2 +' or '1 2 + 2 +' are valid, '1 2 + +' is not)");
-	return false;
-}
+//bool RPN::tooMuchConsecutivOperand() {
+//	if (++this->_consecutivOperandCount > this->_finalNumberOperators + 1)
+//		throw std::runtime_error("-Wrong Expression: One operator is always linked by two expression ('1 2 +' or '1 2 + 2 +' are valid, '1 2 + +' is not)");
+//	return false;
+//}
 
 bool RPN::rpnIsValid( char c )
 {
@@ -61,7 +61,7 @@ bool RPN::rpnIsValid( char c )
 	return true;
 }
 
-RPN::RPN( char *rpnExpression ) : _consecutivOperandCount(0), _numberOfOperand(0), _result("")
+RPN::RPN( char *rpnExpression ) : _consecutivOperandCount(0), _numberOfOperand(0),  _finalNumberOperands(0),_finalNumberOperators(0), _result("")
 {
 	cout << "RPN char * constructor called with : '" << rpnExpression << "'" << endl;
 	rpn(rpnExpression);
@@ -82,7 +82,7 @@ void RPN::rpn( char *rpnExpression )
 			it++;
 		if ((it == rpnStringExpression.end() && checkEnd()) || !rpnIsValid( *it ))
 			return ;
-		if (isOperand( *it ) && !tooMuchConsecutivOperand())
+		if (isOperand( *it ))//&& !tooMuchConsecutivOperand() ))
 			_execStack.push( *it - 48 );
 		else if (isOperator( *it ) && !tooMuchOperators())
 		{
@@ -99,6 +99,7 @@ bool RPN::isOperand( char c )
 {
 	if (operands.find(c) != string::npos)
 	{
+		this->_finalNumberOperands++;
 		this->_numberOfOperand++;
 		return true;
 	}
@@ -109,6 +110,7 @@ bool RPN::isOperator( char c )
 {
 	if (operators.find(c) != string::npos)
 	{
+		this->_finalNumberOperators++;
 		this->_consecutivOperandCount--;
 		return true;
 	}
@@ -182,5 +184,9 @@ void RPN::performOperation( char c )
 
 string RPN::getResult() const
 {
+	std::cout <<"Operand: " << this->_finalNumberOperands << std::endl;
+	std::cout <<"Operator: " << this->_finalNumberOperators << std::endl;
+	if (this->_finalNumberOperands > this->_finalNumberOperators + 1)
+		throw std::runtime_error("Wrong Expression: One operator is always linked by two expression ('1 2 +' or '1 2 + 2 +' are valid, '1 2 + +' is not)");
 	return this->_result;
 }

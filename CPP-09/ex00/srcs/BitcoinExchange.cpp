@@ -114,7 +114,7 @@ int BitcoinExchange::timestampIsValid( const std::string &timestamp ) {
 	int month; sj >> month;
 	int year; sk >> year;
 
-	if ( day < 1 || day > 31 || year > 2023 )
+	if ( day < 1 || day > 31 || year > 2023 || month < 1 || month > 12 )
 		return WRONG_DATE;
 	switch (month) {
 		case 2:
